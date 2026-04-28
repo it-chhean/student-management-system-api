@@ -32,7 +32,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public DepartmentResponse getById(Integer id) {
         Department department = departmentRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Department not found with id:" + id ));
+            .orElseThrow(() -> new ResourceNotFoundException("Department", id));
         return departmentMapper.toResponse(department);
     }
     
@@ -49,7 +49,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public DepartmentResponse update(Integer id, DepartmentRequest request) {
         Department department = departmentRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Department not found with id:" + id ));
+            .orElseThrow(() -> new ResourceNotFoundException("Department", id));
         departmentMapper.updateFromRequest(request, department);
         return departmentMapper.toResponse(departmentRepository.save(department));
     }
@@ -58,7 +58,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public void delete(Integer id) {
         Department department = departmentRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Department not found with id:" + id ));
+            .orElseThrow(() -> new ResourceNotFoundException("Department", id));
         departmentRepository.delete(department);
     }
     
