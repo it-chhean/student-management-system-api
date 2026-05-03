@@ -19,15 +19,13 @@ import com.taskflow.studentmanagement.service.DepartmentService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-
-@RestController
-@RequestMapping(path = "/api/departments")
+ @RestController
+@RequestMapping(path = "/api/v1/departments")
 @RequiredArgsConstructor
 public class DepartmentController {
 
     private final DepartmentService departmentService;
 
-    
     @PostMapping
     public ResponseEntity<DepartmentResponse> create(@Valid @RequestBody DepartmentRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(departmentService.create(request));
@@ -42,7 +40,6 @@ public class DepartmentController {
     public ResponseEntity<DepartmentResponse> getById(@PathVariable Integer id) {
         return ResponseEntity.ok(departmentService.getById(id));
     }
-
 
     @PutMapping("/{id}")
     public ResponseEntity<DepartmentResponse> update(
