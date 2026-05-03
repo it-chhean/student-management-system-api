@@ -13,6 +13,7 @@ import com.taskflow.studentmanagement.repository.DepartmentRepository;
 import com.taskflow.studentmanagement.service.DepartmentService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor

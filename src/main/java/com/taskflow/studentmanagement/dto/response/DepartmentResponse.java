@@ -14,6 +14,5 @@ public class DepartmentResponse {
     private Integer id;
     private String name;
     private String code;
-    private String description;
 
 }

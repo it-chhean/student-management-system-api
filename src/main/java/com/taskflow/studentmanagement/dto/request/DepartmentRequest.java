@@ -1,17 +1,20 @@
 package com.taskflow.studentmanagement.dto.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.*;
 
-
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class DepartmentRequest {
 
+        @NotBlank(message = "Department name is required")
+        @Size(min = 5, max = 50)
         private String name;
-        private String code;
-        private String description;
 
-}  
+        @NotBlank(message = "Department code is required")
+        @Size(min = 3, max = 10)
+        private String code;
+}

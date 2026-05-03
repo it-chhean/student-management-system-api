@@ -19,7 +19,8 @@ import com.taskflow.studentmanagement.service.DepartmentService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
- @RestController
+
+@RestController
 @RequestMapping(path = "/api/v1/departments")
 @RequiredArgsConstructor
 public class DepartmentController {
@@ -27,7 +28,7 @@ public class DepartmentController {
     private final DepartmentService departmentService;
 
     @PostMapping
-    public ResponseEntity<DepartmentResponse> create(@Valid @RequestBody DepartmentRequest request) {
+    public ResponseEntity<DepartmentResponse> create( @RequestBody DepartmentRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(departmentService.create(request));
     }
 
