@@ -2,12 +2,12 @@ package com.taskflow.studentmanagement.service.impl;
 
 import java.util.List;
 
+import com.taskflow.studentmanagement.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.taskflow.studentmanagement.dto.request.DepartmentRequest;
 import com.taskflow.studentmanagement.dto.response.DepartmentResponse;
 import com.taskflow.studentmanagement.entity.Department;
-import com.taskflow.studentmanagement.exception.ResourceNotFoundException;
 import com.taskflow.studentmanagement.mapper.DepartmentMapper;
 import com.taskflow.studentmanagement.repository.DepartmentRepository;
 import com.taskflow.studentmanagement.service.DepartmentService;
@@ -21,21 +21,18 @@ public class DepartmentServiceImpl implements DepartmentService {
     private final DepartmentRepository departmentRepository;
     private final DepartmentMapper departmentMapper;
 
-    
     @Override
     public DepartmentResponse create(DepartmentRequest request) {
         Department department = departmentMapper.toEntity(request);
         return departmentMapper.toResponse(departmentRepository.save(department));
     }
-    
-    
+
     @Override
     public DepartmentResponse getById(Integer id) {
         Department department = departmentRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Department", id));
+                .orElseThrow(() -> new ResourceNotFoundException("Department"+ id));
         return departmentMapper.toResponse(department);
     }
-    
     
     @Override
     public List<DepartmentResponse> getAll() {
@@ -45,22 +42,19 @@ public class DepartmentServiceImpl implements DepartmentService {
                 .toList();
     }
     
-    
     @Override
     public DepartmentResponse update(Integer id, DepartmentRequest request) {
         Department department = departmentRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Department", id));
+                .orElseThrow(() -> new ResourceNotFoundException("Department"+id));
         departmentMapper.updateFromRequest(request, department);
         return departmentMapper.toResponse(departmentRepository.save(department));
     }
     
-    
     @Override
     public void delete(Integer id) {
         Department department = departmentRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Department", id));
+            .orElseThrow(() -> new ResourceNotFoundException("Department"+id));
         departmentRepository.delete(department);
     }
-    
-    
+
 }

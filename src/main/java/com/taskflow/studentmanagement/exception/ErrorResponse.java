@@ -1,20 +1,40 @@
 package com.taskflow.studentmanagement.exception;
 
-import java.time.LocalDateTime;
-import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import org.springframework.http.HttpStatus;
+import java.time.Instant;
 
-@Getter @Setter
 @Builder
-public class ErrorResponse {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public record ErrorResponse (
 
-    private int status;
-    private String message;
-    private String path;
-    private LocalDateTime timestamp;
-    private List<String> errors;
+        String status,
+        int code,
+        String message,
+        Instant timestamp,
+        Object errorDetails
 
+) {
+
+        public static ErrorResponse of(HttpStatus status, String message) {
+                return new ErrorResponse(
+                        status.getReasonPhrase(),
+                        status.value(),
+                        message,
+                        Instant.now(),
+                        null
+                );
+        }
+
+        public static ErrorResponse of(HttpStatus status, String message, Object errorDetails) {
+                return new ErrorResponse(
+                        status.getReasonPhrase(),
+                        status.value(),
+                        message,
+                        Instant.now(),
+                        errorDetails
+                );
+        }
 }

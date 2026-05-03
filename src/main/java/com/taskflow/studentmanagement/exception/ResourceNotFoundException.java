@@ -1,8 +1,9 @@
 package com.taskflow.studentmanagement.exception;
 
-public class ResourceNotFoundException extends RuntimeException {
+import org.springframework.http.HttpStatus;
 
-    public ResourceNotFoundException(String message, int id) {
-        super(message + " not found with id: " + id);
+public class ResourceNotFoundException extends AppException {
+    public ResourceNotFoundException(String message) {
+        super(HttpStatus.NOT_FOUND, message);
     }
 }

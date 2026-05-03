@@ -7,12 +7,14 @@ import com.taskflow.studentmanagement.dto.response.DepartmentResponse;
 
 public interface DepartmentService {
 
-
     DepartmentResponse create(DepartmentRequest request);
-    DepartmentResponse getById(Integer id);
-    List<DepartmentResponse> getAll();
-    DepartmentResponse update(Integer id, DepartmentRequest request);
-    void delete(Integer id);
 
+    DepartmentResponse getById(Integer id);
+
+    List<DepartmentResponse> getAll();
+
+    DepartmentResponse update(Integer id, DepartmentRequest request);
+
+    void delete(Integer id);
 
 }
