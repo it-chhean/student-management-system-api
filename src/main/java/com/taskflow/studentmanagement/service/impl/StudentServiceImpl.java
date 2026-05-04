@@ -1,5 +1,11 @@
 package com.taskflow.studentmanagement.service.impl;
 
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
 import com.taskflow.studentmanagement.dto.request.CreateStudentRequest;
 import com.taskflow.studentmanagement.dto.request.UpdateStudentRequest;
 import com.taskflow.studentmanagement.dto.response.StudentResponse;
@@ -8,12 +14,8 @@ import com.taskflow.studentmanagement.exception.ResourceNotFoundException;
 import com.taskflow.studentmanagement.mapper.StudentMapper;
 import com.taskflow.studentmanagement.repository.StudentRepository;
 import com.taskflow.studentmanagement.service.StudentService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 
-import java.util.List;
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
@@ -69,6 +71,7 @@ public class StudentServiceImpl implements StudentService {
                 .orElseThrow(() -> new ResourceNotFoundException("Student not found"));
 
         student.setDeleted(true);
+
         studentRepository.save(student);
     }
 }

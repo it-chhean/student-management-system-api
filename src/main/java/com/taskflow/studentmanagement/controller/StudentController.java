@@ -4,6 +4,7 @@ import com.taskflow.studentmanagement.dto.request.CreateStudentRequest;
 import com.taskflow.studentmanagement.dto.request.UpdateStudentRequest;
 import com.taskflow.studentmanagement.dto.response.StudentResponse;
 import com.taskflow.studentmanagement.service.StudentService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,13 +21,13 @@ public class StudentController {
     private final StudentService studentService;
 
     @PostMapping
-    public ResponseEntity<StudentResponse> create(@RequestBody CreateStudentRequest request) {
+    public ResponseEntity<StudentResponse> create(@Valid @RequestBody CreateStudentRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(studentService.create(request));
     }
 
     @GetMapping
     public ResponseEntity<Page<StudentResponse>> getAll(
-            @PageableDefault(page = 0, size = 20, sort = "id") Pageable pageable
+            @PageableDefault(size = 20, sort = "id") Pageable pageable
     ) {
         return ResponseEntity.ok(studentService.getAll(pageable));
     }
