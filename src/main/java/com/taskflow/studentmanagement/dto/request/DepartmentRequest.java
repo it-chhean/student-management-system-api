@@ -8,6 +8,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class DepartmentRequest {
 
         @NotBlank(message = "Department name is required")
