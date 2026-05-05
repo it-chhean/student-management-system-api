@@ -23,10 +23,10 @@ public class Department {
     @Column(name = "department_id")
     private Integer id;
 
-    @Column(name = "department_name", nullable = false)
+    @Column(name = "department_name", nullable = false, length = 50)
     private String name;
 
-    @Column(name = "department_code", nullable = false)
+    @Column(name = "department_code", nullable = false, length = 20)
     private String code;
 
 }
