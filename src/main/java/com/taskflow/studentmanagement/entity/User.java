@@ -43,8 +43,6 @@ public class User implements UserDetails {
     @Column(name = "user_password", nullable = false, length = 250)
     private String password;
 
-    private
-
     private String verificationToken;
 
     private boolean verified;

@@ -12,4 +12,5 @@ public abstract class AppException extends RuntimeException {
         super(message);
         this.status = status;
     }
+
 }
