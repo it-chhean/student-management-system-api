@@ -11,6 +11,9 @@ import lombok.NoArgsConstructor;
 public class CreateStudentRequest {
 
     @NotBlank
+    private String code;
+
+    @NotBlank
     private String khFirstName;
 
     @NotBlank
@@ -33,5 +36,7 @@ public class CreateStudentRequest {
 
     @NotBlank
     private String gender;
+
+    private StudentAddressRequest address;
 
 }

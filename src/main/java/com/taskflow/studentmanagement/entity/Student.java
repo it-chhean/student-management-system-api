@@ -1,11 +1,24 @@
 package com.taskflow.studentmanagement.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
+import java.time.LocalDateTime;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDateTime;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "students")
@@ -48,7 +61,9 @@ public class Student {
     @Column(name = "gender", nullable = false, length = 7)
     private String gender;
 
-    private boolean active = true;
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "student_address_id")
+    private StudentAddress address;
 
     private boolean isDeleted = false;
 
@@ -59,4 +74,5 @@ public class Student {
     @UpdateTimestamp
     @Column(nullable = false, name = "updated_at")
     private LocalDateTime updatedAt;
+
 }
