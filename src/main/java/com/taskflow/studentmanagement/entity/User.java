@@ -1,12 +1,13 @@
 package com.taskflow.studentmanagement.entity;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,8 +19,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "users")
@@ -42,16 +41,6 @@ public class User implements UserDetails {
 
     @Column(name = "user_password", nullable = false, length = 250)
     private String password;
-
-    private String verificationToken;
-
-    private boolean verified;
-
-    private String otp;
-
-    private boolean verifiedOtp;
-
-    private Instant expiryOtp;
 
     private boolean status;
 
