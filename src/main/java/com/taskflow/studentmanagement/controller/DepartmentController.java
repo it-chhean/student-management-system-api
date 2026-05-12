@@ -49,7 +49,6 @@ public class DepartmentController {
         return ResponseEntity.ok(departmentService.update(id, request));
     }
 
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         departmentService.delete(id);
