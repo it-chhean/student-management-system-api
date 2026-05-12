@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "/api/v1/students")
+@RequestMapping(path = "/api/v1/auth")
 public class AuthController {
 
     @GetMapping
     public ResponseEntity<String> getMessage() {
-        return ResponseEntity.ok("SPRINGBOOT APPLICATIOIN IS WORKED!");
+        return ResponseEntity.ok("SPRINGBOOT APPLICATION IS WORKED!");
     }
 
 }

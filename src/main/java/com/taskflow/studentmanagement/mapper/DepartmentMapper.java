@@ -8,7 +8,7 @@ import com.taskflow.studentmanagement.dto.request.DepartmentRequest;
 import com.taskflow.studentmanagement.dto.response.DepartmentResponse;
 import com.taskflow.studentmanagement.entity.Department;
 
-@Mapper(componentModel = "sprring")
+@Mapper(componentModel = "spring")
 public interface DepartmentMapper {
 
     DepartmentResponse toResponse(Department department);

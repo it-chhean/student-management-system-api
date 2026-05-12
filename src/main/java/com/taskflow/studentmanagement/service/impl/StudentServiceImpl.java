@@ -27,15 +27,16 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentResponse create(CreateStudentRequest request) {
         Student student = studentMapper.toEntity(request);
+        if ( student.getAddress() != null ) {
+            student.getAddress().setStudent(student);
+        }
         return studentMapper.toResponse(studentRepository.save(student));
     }
 
     @Override
     public StudentResponse getById(Long id) {
-
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Student not found"));
-
         return studentMapper.toResponse(student);
     }
 
@@ -55,23 +56,17 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentResponse update(Long id, UpdateStudentRequest request) {
-
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Student not found"));
-
         studentMapper.updateFromRequest(request, student);
-
         return studentMapper.toResponse(studentRepository.save(student));
     }
 
     @Override
     public void delete(Long id) {
-
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Student not found"));
-
         student.setDeleted(true);
-
         studentRepository.save(student);
     }
 }

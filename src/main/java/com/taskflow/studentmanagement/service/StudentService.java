@@ -21,4 +21,5 @@ public interface StudentService {
     StudentResponse update(Long id, UpdateStudentRequest request);
 
     void delete(Long id);
+
 }

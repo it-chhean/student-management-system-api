@@ -1,19 +1,17 @@
 package com.taskflow.studentmanagement.dto.response;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class StudentAddressResponse {
-
     private Long id;
-
     private Long studentId;
-
-    private String houseNumber;
-
     private String street;
-
-    private String sangkat;
-
-    private String khan;
-
-    private String province;
-
+    private String city;
+    private String district;
+    private String country;
 }

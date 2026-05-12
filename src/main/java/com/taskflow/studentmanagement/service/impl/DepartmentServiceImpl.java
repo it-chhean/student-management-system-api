@@ -30,7 +30,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public DepartmentResponse getById(Integer id) {
         Department department = departmentRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Department not found "));
+            .orElseThrow(() -> new ResourceNotFoundException("Department not found"));
         return departmentMapper.toResponse(department);
     }
 

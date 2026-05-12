@@ -24,8 +24,6 @@ public class Instructor {
     @Column(name = "instructor_id")
     private Long id;
 
-    private User userId; 
-
     @Column(name = "first_name", length = 50, nullable = false)
     private String firstName;
 

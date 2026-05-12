@@ -6,7 +6,7 @@ public class RefresToken {
     
     private Long id;
 
-    private User userId;
+//    private User userId;
 
     private String token;
 

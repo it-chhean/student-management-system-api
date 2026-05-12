@@ -1,26 +1,22 @@
 package com.taskflow.studentmanagement.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class StudentAddressRequest {
 
-    @NotNull
-    private Long studentId;
-
-    @NotBlank(message = "House number is required")
-    private String houseNumber;
-
-    @NotBlank(message = "Street is required")
     private String street;
 
-    @NotBlank(message = "Sangkat is required")
-    private String sangkat;
+    @NotBlank(message = "City is required")
+    private String city;
 
-    @NotBlank(message = "khan is required")
-    private String khan;
+    private String district;
 
-    @NotBlank(message = "Province is required")
-    private String province;
-
+    @NotBlank(message = "Country is required")
+    private String country;
 }

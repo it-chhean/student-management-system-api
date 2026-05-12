@@ -10,12 +10,10 @@ import lombok.*;
 
 @Entity
 @Table(name = "departments")
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 public class Department {
 
     @Id

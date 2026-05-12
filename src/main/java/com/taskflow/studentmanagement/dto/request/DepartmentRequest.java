@@ -9,8 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DepartmentRequest {
+
     @NotBlank(message = "Department name is required")
     private String name;
+
     @NotBlank(message = "Department name is required")
     private String code;
+
 }

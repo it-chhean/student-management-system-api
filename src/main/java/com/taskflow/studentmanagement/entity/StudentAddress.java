@@ -18,22 +18,19 @@ public class StudentAddress {
     @Column(name = "student_address_id")
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "student_id", nullable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "student_id", referencedColumnName = "student_id")
     private Student student;
 
-    @Column(name = "house_name", nullable = false, length = 50)
-    private String houseNumber;
-
-    @Column(name = "street", nullable = false, length = 50)
+    @Column(nullable = false, length = 50)
     private String street;
 
-    @Column(name = "sangkat", nullable = false, length = 50)
-    private String sangkat;
+    @Column(nullable = false, length = 50)
+    private String city;
 
-    @Column(name = "khan", nullable = false, length = 50)
-    private String khan;
+    @Column(nullable = false, length = 50)
+    private String district;
 
-    @Column(name = "province", nullable = false, length = 50)
-    private String province;
+    @Column(nullable = false, length = 50)
+    private String country;
 }

@@ -62,10 +62,9 @@ public class Student {
     private String gender;
 
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "student_address_id")
     private StudentAddress address;
 
-    private boolean isDeleted = false;
+    private boolean deleted = false;
 
     @CreationTimestamp
     @Column(nullable = false, name = "created_at")

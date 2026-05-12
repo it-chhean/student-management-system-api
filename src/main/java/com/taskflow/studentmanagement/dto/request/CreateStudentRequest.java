@@ -37,6 +37,8 @@ public class CreateStudentRequest {
     @NotBlank
     private String gender;
 
+    private boolean deleted;
+
     private StudentAddressRequest address;
 
 }
