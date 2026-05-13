@@ -8,10 +8,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentAddressResponse {
+
     private Long id;
-    private Long studentId;
     private String street;
     private String city;
     private String district;
     private String country;
+
 }
