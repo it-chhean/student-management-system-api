@@ -1,8 +1,6 @@
 package com.taskflow.studentmanagement.mapper;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
+import org.mapstruct.*;
 
 import com.taskflow.studentmanagement.dto.request.CreateStudentRequest;
 import com.taskflow.studentmanagement.dto.request.UpdateStudentRequest;
@@ -19,11 +17,11 @@ public interface StudentMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     @Mapping(target = "deleted", ignore = true)
-    @Mapping(target = "address", source = "address")
     Student toEntity(CreateStudentRequest request);
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
+    @Mapping(target = "deleted", ignore = true)
     void updateFromRequest(UpdateStudentRequest request, @MappingTarget Student student);
 }

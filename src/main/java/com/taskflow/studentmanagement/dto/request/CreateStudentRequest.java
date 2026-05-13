@@ -1,5 +1,6 @@
 package com.taskflow.studentmanagement.dto.request;
 
+import com.taskflow.studentmanagement.status.Status;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,7 +29,7 @@ public class CreateStudentRequest {
 
     private String gender;
 
-    private boolean deleted;
+    private Status status;
 
     private StudentAddressRequest address;
 

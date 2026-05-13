@@ -2,6 +2,7 @@ package com.taskflow.studentmanagement.dto.request;
 
 import com.taskflow.studentmanagement.entity.StudentAddress;
 
+import com.taskflow.studentmanagement.status.Status;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -30,6 +31,8 @@ public class UpdateStudentRequest {
     private String phone;
 
     private String gender;
+
+    private Status status;
 
     private StudentAddress address;
 }

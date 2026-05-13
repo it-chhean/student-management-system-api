@@ -2,6 +2,7 @@ package com.taskflow.studentmanagement.dto.response;
 
 import java.time.LocalDateTime;
 
+import com.taskflow.studentmanagement.status.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,9 +21,9 @@ public class StudentResponse {
     private String email;
     private String phone;
     private String gender;
-    private boolean deleted;
+    private Status status;
+    private StudentAddressResponse address;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private StudentAddressResponse address;
 
 }
