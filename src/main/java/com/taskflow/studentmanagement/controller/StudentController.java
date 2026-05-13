@@ -59,4 +59,4 @@ public class StudentController {
         return ResponseEntity.noContent().build();
     }
 
- }
+}

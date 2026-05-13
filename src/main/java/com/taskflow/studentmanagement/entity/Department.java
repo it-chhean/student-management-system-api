@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 import lombok.*;
 
 @Entity
-@Table(name = "departments")
+@Table(name = "tbl_departments")
 @Getter
 @Setter
 @NoArgsConstructor

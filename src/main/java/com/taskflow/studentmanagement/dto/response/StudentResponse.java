@@ -6,11 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentResponse {
+
     private Long id;
     private String khFirstName;
     private String khLastName;
@@ -20,8 +20,9 @@ public class StudentResponse {
     private String email;
     private String phone;
     private String gender;
-    private boolean active;
+    private boolean deleted;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private StudentAddressResponse address;
+
 }

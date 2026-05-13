@@ -12,8 +12,8 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 
 import java.util.List;
 
-@Slf4j
 @RestControllerAdvice
+@Slf4j
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(AppException.class)
@@ -73,4 +73,5 @@ public class GlobalExceptionHandler {
         return ResponseEntity.internalServerError()
                 .body(ErrorResponse.of(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred"));
     }
+
 }
