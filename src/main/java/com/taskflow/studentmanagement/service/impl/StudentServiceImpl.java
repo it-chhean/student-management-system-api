@@ -2,8 +2,10 @@ package com.taskflow.studentmanagement.service.impl;
 
 import java.util.List;
 
+import com.taskflow.studentmanagement.status.Status;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -74,6 +76,16 @@ public class StudentServiceImpl implements StudentService {
         log.info("Total students fetched: {}", students.size());
 
         return students;
+    }
+
+    @Override
+    public Page<StudentResponse> getStudents(String code, Status status, int page, int size) {
+
+        Pageable pageable = PageRequest.of(page, size);
+
+        Page<Student> students = studentRepository.searchStudents(code, status,pageable);
+
+        return students.map(studentMapper::toResponse);
     }
 
     @Override
