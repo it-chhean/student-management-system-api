@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.taskflow.studentmanagement.dto.request.DepartmentRequest;
 import com.taskflow.studentmanagement.dto.response.DepartmentResponse;
 import com.taskflow.studentmanagement.service.DepartmentService;
@@ -43,8 +42,7 @@ public class DepartmentController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<DepartmentResponse> update(@PathVariable Integer id,
-                                                  @RequestBody DepartmentRequest request
+    public ResponseEntity<DepartmentResponse> update(@PathVariable Integer id, @RequestBody DepartmentRequest request
     ) {
         return ResponseEntity.ok(departmentService.update(id, request));
     }

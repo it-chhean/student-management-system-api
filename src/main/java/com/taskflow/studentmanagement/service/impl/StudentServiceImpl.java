@@ -1,11 +1,8 @@
 package com.taskflow.studentmanagement.service.impl;
 
-import java.util.List;
 
-import com.taskflow.studentmanagement.status.Status;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -110,4 +107,5 @@ public class StudentServiceImpl implements StudentService {
 
         log.info("Student deleted successfully with id: {}", id);
     }
+
 }

@@ -1,12 +1,9 @@
 package com.taskflow.studentmanagement.controller;
 
-import com.taskflow.studentmanagement.status.Status;
-import org.apache.coyote.Response;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +15,6 @@ import com.taskflow.studentmanagement.service.StudentService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 @RequestMapping(path = "/api/v1/students")
@@ -72,4 +66,5 @@ public class StudentController {
         }
         return pageable;
     }
+
 }

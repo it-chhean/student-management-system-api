@@ -3,8 +3,6 @@ package com.taskflow.studentmanagement.dto.request;
 import com.taskflow.studentmanagement.entity.StudentAddress;
 
 import com.taskflow.studentmanagement.status.Status;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

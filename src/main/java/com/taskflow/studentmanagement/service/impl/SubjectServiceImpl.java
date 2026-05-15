@@ -3,7 +3,6 @@ package com.taskflow.studentmanagement.service.impl;
 import com.taskflow.studentmanagement.dto.request.SubjectRequest;
 import com.taskflow.studentmanagement.dto.response.SubjectResponse;
 import com.taskflow.studentmanagement.entity.Subject;
-import com.taskflow.studentmanagement.exception.ConflictException;
 import com.taskflow.studentmanagement.exception.ResourceNotFoundException;
 import com.taskflow.studentmanagement.mapper.SubjectMapper;
 import com.taskflow.studentmanagement.repository.SubjectRepository;
