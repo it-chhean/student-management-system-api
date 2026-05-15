@@ -1,11 +1,12 @@
 package com.taskflow.studentmanagement.entity;
 
 import jakarta.persistence.*;
-
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 
 @Entity
 @Table(name = "tbl_student")
@@ -13,43 +14,44 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Student extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "student_id")
-    private Long id;
+    Long id;
 
     @Column(name = "student_code", unique = true , nullable = false, updatable = false)
-    private String code;
+    String code;
 
     @Column(name = "kh_first_name", nullable = false)
-    private String khFirstName;
+    String khFirstName;
 
     @Column(name = "kh_last_name", nullable = false)
-    private String khLastName;
+    String khLastName;
 
     @Column(name = "en_first_name", nullable = false)
-    private String enFirstName;
+    String enFirstName;
 
     @Column(name = "en_last_name", nullable = false)
-    private String enLastName;
+    String enLastName;
 
     @Column(name = "date_of_birth", nullable = false, length = 10)
-    private String dob;
+    String dob;
 
     @Column(name = "email", nullable = false)
-    private String email;
+    String email;
 
     @Column(name = "phone_number", nullable = false)
-    private String phone;
+    String phone;
 
     @Column(name = "gender", nullable = false, length = 7)
-    private String gender;
+    String gender;
 
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
-    private StudentAddress address;
+    StudentAddress address;
 
-    private Boolean deleted = false;
+    Boolean deleted = false;
 
 }

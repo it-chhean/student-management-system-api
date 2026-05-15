@@ -6,21 +6,24 @@ import com.taskflow.studentmanagement.status.EnrollmentStatus;
 
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Enrollment {
 
-    private Long id;
+    Long id;
 
-    private Student studentId;
+    Student studentId;
 
-    private Course courseId;
+    Course courseId;
 
-    private LocalDateTime enrollmentDate;
+    LocalDateTime enrollmentDate;
 
     @Enumerated(EnumType.STRING)
-    private EnrollmentStatus status;
+    EnrollmentStatus status;
 
-    private LocalDateTime createdAt;
+    LocalDateTime createdAt;
 
-    private LocalDateTime updatedAt;
+    LocalDateTime updatedAt;
 }

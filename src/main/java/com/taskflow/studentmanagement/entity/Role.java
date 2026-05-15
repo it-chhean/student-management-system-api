@@ -1,12 +1,16 @@
 package com.taskflow.studentmanagement.entity;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Role {
 
-    private Integer id;
+    Integer id;
 
-    private String name;
+    String name;
 
-    private String description;
+    String description;
 
-    private boolean isActive;
+    boolean isActive;
 }

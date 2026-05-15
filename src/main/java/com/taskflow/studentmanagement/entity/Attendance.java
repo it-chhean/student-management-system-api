@@ -13,10 +13,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 
 @Entity
 @Table(name = "attendances")
@@ -24,25 +26,26 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Attendance {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "attendance_id")
-    private Long id;
+    Long id;
 
     @Column(name = "start_date")
-    private LocalDateTime startDate;
+    LocalDateTime startDate;
 
     @Column(name = "end_date")
-    private LocalDateTime endDate;
+    LocalDateTime endDate;
 
     @Column(name = "work_date")
-    private LocalDate workdDate;
+    LocalDate workdDate;
 
     @Enumerated(EnumType.STRING)
-    private AttendanceStatus status;
+    AttendanceStatus status;
 
     @Column(name = "remarks")
-    private String remarks;
+    String remarks;
 }

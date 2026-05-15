@@ -1,16 +1,22 @@
 package com.taskflow.studentmanagement.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 
-@Data
+@Getter
+@Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class SubjectRequest {
 
     @NotBlank(message = "Subject name is required")
-    private String name;
+    String name;
 
     @NotBlank(message = "Subject code is required")
-    private String code;
+    String code;
 
-    private String description;
+    String description;
 }

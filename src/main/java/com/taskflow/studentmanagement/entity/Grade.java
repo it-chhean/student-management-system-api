@@ -3,14 +3,18 @@ package com.taskflow.studentmanagement.entity;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Grade {
 
-   private Long id;
+   Long id;
 
-   private BigDecimal score;
+   BigDecimal score;
 
-   private String grade;
+   String grade;
 
-   private LocalDateTime dateRecorded;
+   LocalDateTime dateRecorded;
 
 }

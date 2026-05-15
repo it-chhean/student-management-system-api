@@ -3,34 +3,41 @@ package com.taskflow.studentmanagement.dto.request;
 import com.taskflow.studentmanagement.entity.StudentAddress;
 
 import com.taskflow.studentmanagement.status.Status;
+
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class UpdateStudentRequest {
 
-    private Long id;
+    Long id;
 
-    private String khFirstName;
+    String khFirstName;
 
-    private String khLastName;
+    String khLastName;
 
-    private String enFirstName;
+    String enFirstName;
 
-    private String enLastName;
+    String enLastName;
 
-    private String dob;
+    String dob;
 
-    private String email;
+    String email;
 
-    private String phone;
+    String phone;
 
-    private String gender;
+    String gender;
 
-    private Status status;
+    Status status;
 
-    private StudentAddress address;
+    StudentAddress address;
 }

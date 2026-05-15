@@ -2,35 +2,38 @@ package com.taskflow.studentmanagement.dto.request;
 
 import com.taskflow.studentmanagement.status.Status;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class CreateStudentRequest {
 
-    private String code;
+    String code;
 
-    private String khFirstName;
+    String khFirstName;
 
-    private String khLastName;
+    String khLastName;
 
-    private String enFirstName;
+    String enFirstName;
 
-    private String enLastName;
+    String enLastName;
 
-    private String dob;
+    String dob;
 
-    private String email;
+    String email;
 
-    private String phone;
+    String phone;
 
-    private String gender;
+    String gender;
 
-    private Status status;
+    Status status;
 
-    private StudentAddressRequest address;
+    StudentAddressRequest address;
 
 }

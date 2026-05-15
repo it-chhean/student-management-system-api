@@ -2,26 +2,36 @@ package com.taskflow.studentmanagement.dto.request;
 
 import com.taskflow.studentmanagement.status.Status;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 
-@Data
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class InstructorRequest {
 
     @NotBlank(message = "Instructor Code is required")
-    private String code;
+    String code;
 
     @NotBlank(message = "Instructor Khmer name is required")
-    private String khName;
+    String khName;
 
     @NotBlank(message = "Instructor English name is required")
-    private String enName;
+    String enName;
 
-    private String specialization;
+    String specialization;
 
-    private String email;
+    String email;
 
-    private String phone;
+    String phone;
 
-    private Status status;
+    Status status;
 
 }

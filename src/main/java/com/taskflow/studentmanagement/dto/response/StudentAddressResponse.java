@@ -1,18 +1,24 @@
 package com.taskflow.studentmanagement.dto.response;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class StudentAddressResponse {
 
-    private Long id;
-    private String street;
-    private String city;
-    private String district;
-    private String country;
+    Long id;
+    String street;
+    String city;
+    String district;
+    String country;
 
 }

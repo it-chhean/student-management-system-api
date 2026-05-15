@@ -1,10 +1,13 @@
 package com.taskflow.studentmanagement.entity;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -16,32 +19,33 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Instructor extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "instructor_id")
-    private Long id;
+    Long id;
 
     @Column(name = "instructor_code")
-    private String code;
+    String code;
 
     @Column(name = "kh_name", length = 50, nullable = false)
-    private String khName;
+    String khName;
 
     @Column(name = "en_name", length = 50, nullable = false)
-    private String enName;
+    String enName;
 
     @Column(name = "specialization", length = 50, nullable = false)
-    private String specialization;
+    String specialization;
 
     @Column(name = "email", nullable = false, unique = true)
-    private String email;
+    String email;
 
     @Column(name = "phone", length = 20, nullable = false)
-    private String phone;
+    String phone;
 
     @Column(name = "status")
-    private boolean deleted = false;
+    boolean deleted = false;
 
 }
