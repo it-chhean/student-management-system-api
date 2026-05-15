@@ -1,7 +1,10 @@
 package com.taskflow.studentmanagement.controller;
 
 import com.taskflow.studentmanagement.status.Status;
+import org.apache.coyote.Response;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
@@ -16,6 +19,9 @@ import com.taskflow.studentmanagement.service.StudentService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping(path = "/api/v1/students")
 @RequiredArgsConstructor
@@ -26,13 +32,6 @@ public class StudentController {
     @PostMapping
     public ResponseEntity<StudentResponse> create(@Valid @RequestBody CreateStudentRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(studentService.create(request));
-    }
-
-    @GetMapping
-    public ResponseEntity<Page<StudentResponse>> getAll(
-            @PageableDefault(size = 20, sort = "id") Pageable pageable
-    ) {
-        return ResponseEntity.ok(studentService.getAll(pageable));
     }
 
     @GetMapping("/{id}")
@@ -54,13 +53,23 @@ public class StudentController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<StudentResponse>> searchStudents(
-            @RequestParam(required = false) String code,
-            @RequestParam(required = false) Status status,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
+    public ResponseEntity<Page<StudentResponse>> getStudents(
+            @RequestParam(required = false) String status,
+            @ParameterObject Pageable pageable
     ) {
-        return ResponseEntity.ok(studentService.getStudents(code, status, page, size));
+       pageable = validationPageable(pageable);
+       return ResponseEntity.ok(studentService.getStudentWithFilter(status, pageable));
     }
 
+    private Pageable validationPageable(Pageable pageable) {
+        int maxSize = 100;
+        if (pageable.getPageSize() > maxSize) {
+            pageable = PageRequest.of(
+                    pageable.getPageNumber(),
+                    maxSize,
+                    pageable.getSort()
+            );
+        }
+        return pageable;
+    }
 }

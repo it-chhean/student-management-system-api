@@ -20,13 +20,7 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public SubjectResponse create(SubjectRequest request) {
-
-        if (subjectRepository.exitsByName(request.getName())) {
-            throw new ConflictException("Subject is already exits by name: " + request.getName());
-        }
-
         Subject subject = subjectMapper.toEntity(request);
-
         return subjectMapper.toResponse(subjectRepository.save(subject));
     }
 

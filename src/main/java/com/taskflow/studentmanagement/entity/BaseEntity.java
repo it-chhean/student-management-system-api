@@ -2,6 +2,7 @@ package com.taskflow.studentmanagement.entity;
 
 
 import com.taskflow.studentmanagement.status.Status;
+import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.MappedSuperclass;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 public abstract class BaseEntity {
 
     @Enumerated(EnumType.STRING)
+    @Column(insertable = false, updatable = false)
     private Status status;
 
     @CreationTimestamp

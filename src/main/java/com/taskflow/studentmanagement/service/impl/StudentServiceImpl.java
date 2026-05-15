@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.taskflow.studentmanagement.dto.request.CreateStudentRequest;
@@ -64,41 +65,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<StudentResponse> getAll() {
-
-        log.info("Fetching all students");
-
-        List<StudentResponse> students = studentRepository.findByDeletedFalse()
-                .stream()
-                .map(studentMapper::toResponse)
-                .toList();
-
-        log.info("Total students fetched: {}", students.size());
-
-        return students;
-    }
-
-    @Override
-    public Page<StudentResponse> getStudents(String code, Status status, int page, int size) {
-
-        Pageable pageable = PageRequest.of(page, size);
-
-        Page<Student> students = studentRepository.searchStudents(code, status,pageable);
-
-        return students.map(studentMapper::toResponse);
-    }
-
-    @Override
-    public Page<StudentResponse> getAll(Pageable pageable) {
-
-        log.info("Fetching students with pagination");
-
-        Page<StudentResponse> students = studentRepository.findAll(pageable)
+    public Page<StudentResponse> getStudentWithFilter(String status, Pageable pageable) {
+        Specification<Student> specification = ((root, query, criteriaBuilder) ->
+                status != null ? criteriaBuilder.equal(root.get("status"), status) : null
+        );
+        return studentRepository.findAll( specification, pageable)
                 .map(studentMapper::toResponse);
-
-        log.info("Page fetched successfully. Total elements: {}", students.getTotalElements());
-
-        return students;
     }
 
     @Override
@@ -108,7 +80,7 @@ public class StudentServiceImpl implements StudentService {
 
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> {
-                    log.error("Student not found with id: {}", id);
+                    log.info("Student not found with id: {}", id);
                     return new ResourceNotFoundException("Student not found");
                 });
 
@@ -128,7 +100,7 @@ public class StudentServiceImpl implements StudentService {
 
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> {
-                    log.error("Student not found with id: {}", id);
+                    log.warn("Student not found with id: {}", id);
                     return new ResourceNotFoundException("Student not found");
                 });
 

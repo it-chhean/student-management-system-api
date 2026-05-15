@@ -13,12 +13,8 @@ public interface InstructorMapper {
     InstructorResponse toResponse(Instructor instructor);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "createdAt", ignore = true)
-    @Mapping(target = "updatedAt", ignore = true)
     Instructor toEntity(InstructorRequest request);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "createdAt", ignore = true)
-    @Mapping(target = "updatedAt", ignore = true)
     void updateFromRequest(InstructorRequest request, @MappingTarget Instructor instructor);
 }

@@ -15,11 +15,7 @@ public interface StudentService {
 
     StudentResponse getById(Long id);
 
-    List<StudentResponse> getAll();
-
-    Page<StudentResponse> getStudents(String code, Status status, int page, int size);
-
-    Page<StudentResponse> getAll(Pageable pageable);
+    Page<StudentResponse> getStudentWithFilter(String status, Pageable pageable);
 
     StudentResponse update(Long id, UpdateStudentRequest request);
 
