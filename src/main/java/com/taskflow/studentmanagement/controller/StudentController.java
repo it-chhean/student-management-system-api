@@ -8,11 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.taskflow.studentmanagement.dto.request.CreateStudentRequest;
-import com.taskflow.studentmanagement.dto.request.UpdateStudentRequest;
-import com.taskflow.studentmanagement.dto.response.StudentResponse;
+import com.taskflow.studentmanagement.io.request.CreateStudentRequest;
+import com.taskflow.studentmanagement.io.request.UpdateStudentRequest;
+import com.taskflow.studentmanagement.io.response.StudentResponse;
 import com.taskflow.studentmanagement.service.StudentService;
-
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 

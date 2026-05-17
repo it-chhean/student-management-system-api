@@ -2,10 +2,10 @@ package com.taskflow.studentmanagement.mapper;
 
 import org.mapstruct.*;
 
-import com.taskflow.studentmanagement.dto.request.CreateStudentRequest;
-import com.taskflow.studentmanagement.dto.request.UpdateStudentRequest;
-import com.taskflow.studentmanagement.dto.response.StudentResponse;
-import com.taskflow.studentmanagement.entity.Student;
+import com.taskflow.studentmanagement.domain.Student;
+import com.taskflow.studentmanagement.io.request.CreateStudentRequest;
+import com.taskflow.studentmanagement.io.request.UpdateStudentRequest;
+import com.taskflow.studentmanagement.io.response.StudentResponse;
 
 @Mapper(componentModel = "spring", uses = {StudentAddressMapper.class})
 public interface StudentMapper {

@@ -1,10 +1,11 @@
 package com.taskflow.studentmanagement.service;
 
-import com.taskflow.studentmanagement.dto.request.CreateStudentRequest;
-import com.taskflow.studentmanagement.dto.request.UpdateStudentRequest;
-import com.taskflow.studentmanagement.dto.response.StudentResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import com.taskflow.studentmanagement.io.request.CreateStudentRequest;
+import com.taskflow.studentmanagement.io.request.UpdateStudentRequest;
+import com.taskflow.studentmanagement.io.response.StudentResponse;
 
 public interface StudentService {
 

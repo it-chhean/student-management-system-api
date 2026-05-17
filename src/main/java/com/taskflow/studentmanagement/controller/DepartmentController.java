@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.taskflow.studentmanagement.dto.request.DepartmentRequest;
-import com.taskflow.studentmanagement.dto.response.DepartmentResponse;
+
+import com.taskflow.studentmanagement.io.request.DepartmentRequest;
+import com.taskflow.studentmanagement.io.response.DepartmentResponse;
 import com.taskflow.studentmanagement.service.DepartmentService;
 
 import jakarta.validation.Valid;

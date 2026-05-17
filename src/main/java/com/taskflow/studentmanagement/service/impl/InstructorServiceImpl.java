@@ -1,9 +1,9 @@
 package com.taskflow.studentmanagement.service.impl;
 
-import com.taskflow.studentmanagement.dto.request.InstructorRequest;
-import com.taskflow.studentmanagement.dto.response.InstructorResponse;
-import com.taskflow.studentmanagement.entity.Instructor;
+import com.taskflow.studentmanagement.domain.Instructor;
 import com.taskflow.studentmanagement.exception.ResourceNotFoundException;
+import com.taskflow.studentmanagement.io.request.InstructorRequest;
+import com.taskflow.studentmanagement.io.response.InstructorResponse;
 import com.taskflow.studentmanagement.mapper.InstructorMapper;
 import com.taskflow.studentmanagement.repository.InstructorRepository;
 import com.taskflow.studentmanagement.service.InstructorService;

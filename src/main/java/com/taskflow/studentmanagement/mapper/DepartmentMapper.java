@@ -4,9 +4,9 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
-import com.taskflow.studentmanagement.dto.request.DepartmentRequest;
-import com.taskflow.studentmanagement.dto.response.DepartmentResponse;
-import com.taskflow.studentmanagement.entity.Department;
+import com.taskflow.studentmanagement.domain.Department;
+import com.taskflow.studentmanagement.io.request.DepartmentRequest;
+import com.taskflow.studentmanagement.io.response.DepartmentResponse;
 
 @Mapper(componentModel = "spring")
 public interface DepartmentMapper {

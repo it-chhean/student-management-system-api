@@ -2,8 +2,8 @@ package com.taskflow.studentmanagement.service;
 
 import java.util.List;
 
-import com.taskflow.studentmanagement.dto.request.DepartmentRequest;
-import com.taskflow.studentmanagement.dto.response.DepartmentResponse;
+import com.taskflow.studentmanagement.io.request.DepartmentRequest;
+import com.taskflow.studentmanagement.io.response.DepartmentResponse;
 
 public interface DepartmentService {
 
