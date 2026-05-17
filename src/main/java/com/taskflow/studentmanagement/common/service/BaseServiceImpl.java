@@ -6,8 +6,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import javax.naming.directory.InitialDirContext;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 
 @RequiredArgsConstructor
 public abstract class BaseServiceImpl<T extends BaseEntity, ID> implements BaseService<T, ID> {
@@ -54,4 +56,33 @@ public abstract class BaseServiceImpl<T extends BaseEntity, ID> implements BaseS
         repository.deleteAll();
     }
 
+    @Override
+    public T activate(ID id) {
+        return repository.findById(id)
+                .map(entity -> {
+                   entity.setActive(true);
+                   return repository.save(entity);
+                })
+                .orElseThrow(() -> new RuntimeException("Entity not found with id: " + id));
+    }
+
+    @Override
+    public T deactivate(ID id) {
+        return repository.findById(id)
+                .map(entity -> {
+                    entity.setActive(false);
+                    return repository.save(entity);
+                })
+                .orElseThrow(() -> new RuntimeException("Entity not found with id: " + id));
+    }
+
+    @Override
+    public Page<T> findAllActive(Pageable pageable) {
+        return repository.findAllByActive(true, pageable);
+    }
+
+    @Override
+    public Optional<T> findByIdAndActive(ID id, boolean active) {
+        return repository.findByIdAndActive(id, active);
+    }
 }
