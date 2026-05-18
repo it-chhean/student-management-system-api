@@ -35,7 +35,7 @@ public class Course {
     @Column(name = "course_name", nullable = false , length = 50)
     private String name;
 
-    private String desciption;
+    private String description;
 
     private String schedule;
 

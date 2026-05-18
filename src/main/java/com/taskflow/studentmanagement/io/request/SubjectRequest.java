@@ -18,4 +18,5 @@ public class SubjectRequest {
     String code;
 
     String description;
+
 }

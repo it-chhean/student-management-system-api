@@ -19,7 +19,7 @@ public class CreateCourseRequest {
 
      String name;
 
-     String desciption;
+     String description;
 
      String schedule;
 

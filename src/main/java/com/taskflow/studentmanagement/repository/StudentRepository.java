@@ -16,8 +16,8 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     Page<Student> findAll(Specification<Student> specification, Pageable pageable);
 
-    @Query("SELECT u FROM Student u WHERE u.status = :status")
-    Page<Student> findByStatus(@Param("status") String status, Pageable pageable);
+//    @Query("SELECT u FROM Student u WHERE u.status = :status")
+//    Page<Student> findByStatus(@Param("status") String status, Pageable pageable);
 
     Optional<Student> findByDeletedFalse();
 
@@ -27,13 +27,14 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     List<Student> findByCodeContainingAndStatus(String code, Status status);
 
-    @Query("""
-    SELECT s FROM Student s
-    WHERE (:code IS NULL OR LOWER(s.code) LIKE LOWER(CONCAT('%', :code, '%')))
-    AND (:status IS NULL OR s.status = :status)
-    """)
-    Page<Student> searchStudents(
-            @Param("code") String code,
-            @Param("status") Status status,
-            Pageable pageable
-    );}
+//    @Query("""
+//    SELECT s FROM Student s
+//    WHERE (:code IS NULL OR LOWER(s.code) LIKE LOWER(CONCAT('%', :code, '%')))
+//    AND (:status IS NULL OR s.status = :status)
+//    """)
+//    Page<Student> searchStudents(
+//            @Param("code") String code,
+//            @Param("status") Status status,
+//            Pageable pageable
+//    );
+}

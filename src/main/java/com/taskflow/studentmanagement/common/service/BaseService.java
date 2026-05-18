@@ -1,7 +1,6 @@
 package com.taskflow.studentmanagement.common.service;
 
 import com.taskflow.studentmanagement.common.domain.BaseEntity;
-import jakarta.persistence.Id;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

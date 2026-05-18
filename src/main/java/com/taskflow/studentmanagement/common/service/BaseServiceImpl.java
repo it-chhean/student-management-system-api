@@ -6,10 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import javax.naming.directory.InitialDirContext;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 
 @RequiredArgsConstructor
 public abstract class BaseServiceImpl<T extends BaseEntity, ID> implements BaseService<T, ID> {

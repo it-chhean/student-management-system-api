@@ -1,8 +1,8 @@
 package com.taskflow.studentmanagement.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.taskflow.studentmanagement.common.repository.BaseRepository;
 import com.taskflow.studentmanagement.domain.Department;
 
-public interface DepartmentRepository extends JpaRepository<Department, Integer> {
+public interface DepartmentRepository extends BaseRepository<Department, Long> {
 }
