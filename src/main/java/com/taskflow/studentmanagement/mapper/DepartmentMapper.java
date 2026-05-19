@@ -1,20 +1,13 @@
 package com.taskflow.studentmanagement.mapper;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
 
+import com.taskflow.studentmanagement.common.mapper.BaseMapper;
 import com.taskflow.studentmanagement.domain.Department;
 import com.taskflow.studentmanagement.io.request.DepartmentRequest;
 import com.taskflow.studentmanagement.io.response.DepartmentResponse;
 
 @Mapper(componentModel = "spring")
-public interface DepartmentMapper {
+public interface DepartmentMapper extends BaseMapper<Department, DepartmentRequest, DepartmentResponse> {
 
-    DepartmentResponse toResponse(Department department);
-
-    @Mapping(target = "id", ignore = true)
-    Department toEntity(DepartmentRequest request);
-
-    void updateFromRequest(DepartmentRequest request, @MappingTarget Department department);
 }

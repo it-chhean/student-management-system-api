@@ -1,21 +1,20 @@
 package com.taskflow.studentmanagement.common.service;
 
-import com.taskflow.studentmanagement.common.domain.BaseEntity;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
 import java.util.List;
 import java.util.Optional;
 
-public interface BaseService<T extends BaseEntity, ID> {
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-    T save(T entity);
+public interface BaseService<Req, Res, ID> {
 
-    List<T> saveAll(List<T> entities);
+    Res save(Req request);
 
-    Optional<T> findById(ID id);
+    List<Res> saveAll(List<Req> requests);
 
-    Page<T> findAll(Pageable pageable);
+    Optional<Res> findById(ID id);
+
+    Page<Res> findAll(Pageable pageable);
 
     boolean existsById(ID id);
 
@@ -23,18 +22,18 @@ public interface BaseService<T extends BaseEntity, ID> {
 
     void deleteById(ID id);
 
-    void delete(T entity);
+    void delete(ID id);
 
     void deleteAll();
 
-    T activate(ID id);
+    Res activate(ID id);
 
-    T deactivate(ID id);
+    Res deactivate(ID id);
 
-    List<T> findAllActive();
+    List<Res> findAllActive();
 
-    Page<T> findAllActive(Pageable pageable);
+    Page<Res> findAllActive(Pageable pageable);
 
-    Optional<T> findByIdAndActive(ID id, boolean active);
+    Optional<Res> findByIdAndActive(ID id, boolean active);
 
 }

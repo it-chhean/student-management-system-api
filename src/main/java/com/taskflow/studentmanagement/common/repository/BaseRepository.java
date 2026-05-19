@@ -22,4 +22,5 @@ public interface BaseRepository<T extends BaseEntity, ID> extends JpaRepository<
     boolean existsByIdAndActive(ID id, boolean active);
 
     long countByActive(boolean active);
+
 }

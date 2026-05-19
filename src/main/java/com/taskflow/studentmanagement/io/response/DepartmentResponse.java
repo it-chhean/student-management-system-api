@@ -1,5 +1,6 @@
 package com.taskflow.studentmanagement.io.response;
 
+import com.taskflow.studentmanagement.common.dto.BaseResponseDto;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,9 +13,8 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class DepartmentResponse {
+public class DepartmentResponse extends BaseResponseDto {
 
-    Integer id;
     String name;
     String code;
 

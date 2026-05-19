@@ -1,37 +1,53 @@
 package com.taskflow.studentmanagement.common.service;
 
-import com.taskflow.studentmanagement.common.domain.BaseEntity;
-import com.taskflow.studentmanagement.common.repository.BaseRepository;
-import lombok.RequiredArgsConstructor;
+import com.taskflow.studentmanagement.exception.ResourceNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import com.taskflow.studentmanagement.common.domain.BaseEntity;
+import com.taskflow.studentmanagement.common.mapper.BaseMapper;
+import com.taskflow.studentmanagement.common.repository.BaseRepository;
+
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
-public abstract class BaseServiceImpl<T extends BaseEntity, ID> implements BaseService<T, ID> {
+public abstract class BaseServiceImpl<E extends BaseEntity, Req, Res, ID,
+    R extends BaseRepository<E, ID>,
+    M extends BaseMapper<E, Req, Res>> 
+    implements BaseService<Req, Res, ID> {
 
-    private final BaseRepository<T, ID>  repository;
+    private final R repository;
+    private final M mapper;
 
     @Override
-    public T save(T entity) {
-        return repository.save(entity);
+    public Res save(Req request) {
+        E entity = mapper.toEntity(request);
+        return mapper.toResponse(repository.save(entity));
     }
 
     @Override
-    public List<T> saveAll(List<T> entities) {
-       return repository.saveAll(entities);
+    public List<Res> saveAll(List<Req> requests) {
+        List<E> entities = requests.stream()
+                .map(mapper::toEntity)
+                .toList();
+        return repository.saveAll(entities).stream()
+                .map(mapper::toResponse)
+                .toList();
     }
 
     @Override
-    public Optional<T> findById(ID id) {
-        return repository.findById(id);
+    public Optional<Res> findById(ID id) {
+        return repository.findById(id)
+                .map(mapper::toResponse);
     }
 
     @Override
-    public Page<T> findAll(Pageable pageable) {
-        return repository.findAll(pageable);
+    public Page<Res> findAll(Pageable pageable) {
+        return repository.findAll(pageable)
+                .map(mapper::toResponse);
     }
 
     @Override
@@ -46,41 +62,66 @@ public abstract class BaseServiceImpl<T extends BaseEntity, ID> implements BaseS
 
     @Override
     public void deleteById(ID id) {
-        repository.deleteById(id);
+        E entity = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Resource not found with id: " + id
+                ));
+        entity.setActive(false);
+        repository.save(entity) ;
+    }
+
+    @Override
+    public void delete(ID id) {
+        E entity = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Resource not found with id: " + id
+                ));
+        repository.delete(entity);
     }
 
     @Override
     public void deleteAll() {
-        repository.deleteAll();
+        List<E> entities = repository.findAll();
+        entities.forEach(entity -> entity.setActive(false));
+        repository.saveAll(entities);
     }
 
     @Override
-    public T activate(ID id) {
+    public Res activate(ID id) {
         return repository.findById(id)
-                .map(entity -> {
-                   entity.setActive(true);
-                   return repository.save(entity);
+                .map(e -> {
+                   e.setActive(true);
+                   return mapper.toResponse(repository.save(e));
                 })
-                .orElseThrow(() -> new RuntimeException("Entity not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Resource not found with id: " + id ));
     }
 
     @Override
-    public T deactivate(ID id) {
+    public Res deactivate(ID id) {
         return repository.findById(id)
-                .map(entity -> {
-                    entity.setActive(false);
-                    return repository.save(entity);
+                .map(e -> {
+                    e.setActive(false);
+                    return mapper.toResponse(repository.save(e));
                 })
-                .orElseThrow(() -> new RuntimeException("Entity not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Resource not found with id: " + id));
     }
 
     @Override
-    public Page<T> findAllActive(Pageable pageable) {
-        return repository.findAllByActive(true, pageable);
+    public List<Res> findAllActive() {
+        return repository.findAllByActive(true).stream()
+                .map(mapper::toResponse)
+                .toList();
     }
 
     @Override
-    public Optional<T> findByIdAndActive(ID id, boolean active) {
-        return repository.findByIdAndActive(id, active);
+    public Page<Res> findAllActive(Pageable pageable) {
+        return repository.findAllByActive(true, pageable)
+                .map(mapper::toResponse);
+    }
+
+    @Override
+    public Optional<Res> findByIdAndActive(ID id, boolean active) {
+        return repository.findByIdAndActive(id, active)
+                .map(mapper::toResponse);
     }
 }
