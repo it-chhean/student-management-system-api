@@ -1,19 +1,19 @@
-package com.taskflow.studentmanagement.common.service;
-
-import com.taskflow.studentmanagement.common.domain.BaseEntity;
-import com.taskflow.studentmanagement.common.repository.BaseRepository;
-
-import com.taskflow.studentmanagement.exception.ResourceNotFoundException;
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+package com.taskflow.studentmanagement.service.impl;
 
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import com.taskflow.studentmanagement.domain.BaseEntity;
+import com.taskflow.studentmanagement.repository.BaseRepository;
+import com.taskflow.studentmanagement.service.BaseService;
+
+import lombok.RequiredArgsConstructor;
+
 @RequiredArgsConstructor
-public abstract class BaseServiceImpl<T extends BaseEntity, ID>
-    implements BaseService<T, ID> {
+public abstract class BaseServiceImpl<T extends BaseEntity, ID> implements BaseService<T, ID>  {
 
     protected final BaseRepository<T, ID> repository;
 
@@ -101,4 +101,5 @@ public abstract class BaseServiceImpl<T extends BaseEntity, ID>
     public Optional<T> findByIdAndActive(ID id, boolean active) {
         return repository.findByIdAndActive(id, active);
     }
+
 }
