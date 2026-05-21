@@ -1,22 +1,19 @@
 package com.taskflow.studentmanagement.io.request;
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class DepartmentRequest {
 
     @NotBlank(message = "Department name is required")
-    String name;
+    private String name;
 
     @NotBlank(message = "Department name is required")
-    String code;
+    private String code;
 
 }

@@ -24,11 +24,6 @@ import java.time.LocalDateTime;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Instructor extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "instructor_id")
-    private Long id;
-
     @Column(name = "instructor_code")
     private String code;
 

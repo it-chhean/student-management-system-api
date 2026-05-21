@@ -19,51 +19,51 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping(path = "/api/v1/students")
 @RequiredArgsConstructor
 public class StudentController {
-
-    private final StudentService studentService;
-
-    @PostMapping
-    public ResponseEntity<StudentResponse> create(@Valid @RequestBody CreateStudentRequest request) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(studentService.create(request));
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<StudentResponse> getById(@PathVariable Long id) {
-        return ResponseEntity.ok(studentService.getById(id));
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<StudentResponse> update(@PathVariable Long id,
-                                                  @RequestBody UpdateStudentRequest request
-    ) {
-        return ResponseEntity.ok(studentService.update(id, request));
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        studentService.delete(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @GetMapping
-    public ResponseEntity<Page<StudentResponse>> getStudents(
-            @RequestParam(required = false) String status,
-            @ParameterObject Pageable pageable
-    ) {
-       pageable = validationPageable(pageable);
-       return ResponseEntity.ok(studentService.getStudentWithFilter(status, pageable));
-    }
-
-    private Pageable validationPageable(Pageable pageable) {
-        int maxSize = 100;
-        if (pageable.getPageSize() > maxSize) {
-            pageable = PageRequest.of(
-                    pageable.getPageNumber(),
-                    maxSize,
-                    pageable.getSort()
-            );
-        }
-        return pageable;
-    }
+//
+//    private final StudentService studentService;
+//
+//    @PostMapping
+//    public ResponseEntity<StudentResponse> create(@Valid @RequestBody CreateStudentRequest request) {
+//        return ResponseEntity.status(HttpStatus.CREATED).body(studentService.create(request));
+//    }
+//
+//    @GetMapping("/{id}")
+//    public ResponseEntity<StudentResponse> getById(@PathVariable Long id) {
+//        return ResponseEntity.ok(studentService.getById(id));
+//    }
+//
+//    @PutMapping("/{id}")
+//    public ResponseEntity<StudentResponse> update(@PathVariable Long id,
+//                                                  @RequestBody UpdateStudentRequest request
+//    ) {
+//        return ResponseEntity.ok(studentService.update(id, request));
+//    }
+//
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<Void> delete(@PathVariable Long id) {
+//        studentService.delete(id);
+//        return ResponseEntity.noContent().build();
+//    }
+//
+//    @GetMapping
+//    public ResponseEntity<Page<StudentResponse>> getStudents(
+//            @RequestParam(required = false) String status,
+//            @ParameterObject Pageable pageable 
+//    ) {
+//       pageable = validationPageable(pageable);
+//        ResponseEntity.ok(studentService.getStudentWithFilter(status, pageable));
+//    }
+//
+//    private Pageable validationPageable(Pageable pageable) {
+//        int maxSize = 100;
+//        if (pageable.getPageSize() > maxSize) {
+//            pageable = PageRequest.of(
+//                    pageable.getPageNumber(),
+//                    maxSize,
+//                    pageable.getSort()
+//            );
+//        }
+//        return pageable;
+//    }
 
 }

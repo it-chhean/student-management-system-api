@@ -1,13 +1,15 @@
-package com.taskflow.studentmanagement.common.service;
+package com.taskflow.studentmanagement.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.taskflow.studentmanagement.common.domain.BaseEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.taskflow.studentmanagement.common.domain.BaseEntity;
+
 public interface BaseService<T extends BaseEntity, ID> {
+    
     T save(T entity);
 
     List<T> saveAll(List<T> entities);
@@ -36,4 +38,5 @@ public interface BaseService<T extends BaseEntity, ID> {
 
     Page<T> findAllActive(Pageable pageable);
 
-    Optional<T> findByIdAndActive(ID id, boolean active);}
+    Optional<T> findByIdAndActive(ID id, boolean active);
+}

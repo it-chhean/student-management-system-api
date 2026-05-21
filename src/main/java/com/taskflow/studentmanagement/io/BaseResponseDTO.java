@@ -1,11 +1,11 @@
-package com.taskflow.studentmanagement.common.dto;
-
-import lombok.Data;
+package com.taskflow.studentmanagement.io;
 
 import java.time.LocalDateTime;
 
+import lombok.Data;
+
 @Data
-public abstract class BaseResponseDto {
+public abstract class BaseResponseDTO {
 
     private Long id;
     private LocalDateTime createdAt;

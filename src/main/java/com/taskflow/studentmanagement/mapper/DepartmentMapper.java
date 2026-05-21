@@ -8,6 +8,14 @@ import com.taskflow.studentmanagement.io.request.DepartmentRequest;
 import com.taskflow.studentmanagement.io.response.DepartmentResponse;
 
 @Mapper(componentModel = "spring")
+import org.mapstruct.InheritConfiguration;
+
 public interface DepartmentMapper extends BaseMapper<Department, DepartmentRequest, DepartmentResponse> {
+
+    @InheritConfiguration(name = "toEntity")
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "createdAt", ignore = true)
+    @Mapping(target = "updatedAt", ignore = true)
+    Department toEntity(DepartmentRequest request);
 
 }

@@ -18,52 +18,52 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/api/v1/instructors")
 @RequiredArgsConstructor
 public class InstructorController {
-
-    private final InstructorService instructorService;
-
-    @PostMapping
-    public ResponseEntity<InstructorResponse> create(@Valid @RequestBody InstructorRequest request) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(instructorService.create(request));
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<InstructorResponse> getById(@PathVariable Long id) {
-        return ResponseEntity.ok(instructorService.getById(id));
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<InstructorResponse> update(@PathVariable Long id,
-                                                  @RequestBody InstructorRequest request
-    ) {
-        return ResponseEntity.ok(instructorService.update(id, request));
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        instructorService.delete(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @GetMapping
-    public ResponseEntity<Page<InstructorResponse>> getByStatus(
-            @RequestParam Status status,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size,
-            @RequestParam(defaultValue = "createdAt") String sortBy,
-            @RequestParam(defaultValue = "desc") String sortDir) {
-
-        Sort sort = sortDir.equalsIgnoreCase("desc")
-                ? Sort.by(sortBy).descending()
-                : Sort.by(sortBy).ascending();
-
-        Pageable pageable = PageRequest.of(page, size, sort);
-        return ResponseEntity.ok(instructorService.getByStatus(status, pageable));
-    }
-
-    @GetMapping("/count")
-    public ResponseEntity<Long> countByStatus(
-            @RequestParam Status status) {
-        return ResponseEntity.ok(instructorService.countByStatus(status));
-    }
+//
+//    private final InstructorService instructorService;
+//
+//    @PostMapping
+//    public ResponseEntity<InstructorResponse> create(@Valid @RequestBody InstructorRequest request) {
+//        return ResponseEntity.status(HttpStatus.CREATED).body(instructorService.create(request));
+//    }
+//
+//    @GetMapping("/{id}")
+//    public ResponseEntity<InstructorResponse> getById(@PathVariable Long id) {
+//        return ResponseEntity.ok(instructorService.getById(id));
+//    }
+//
+//    @PutMapping("/{id}")
+//    public ResponseEntity<InstructorResponse> update(@PathVariable Long id,
+//                                                  @RequestBody InstructorRequest request
+//    ) {
+//        return ResponseEntity.ok(instructorService.update(id, request));
+//    }
+//
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<Void> delete(@PathVariable Long id) {
+//        instructorService.delete(id);
+//        return ResponseEntity.noContent().build();
+//    }
+//
+//    @GetMapping
+//    public ResponseEntity<Page<InstructorResponse>> getByStatus(
+//            @RequestParam Status status,
+//            @RequestParam(defaultValue = "0") int page,
+//            @RequestParam(defaultValue = "10") int size,
+//            @RequestParam(defaultValue = "createdAt") String sortBy,
+//            @RequestParam(defaultValue = "desc") String sortDir) {
+//
+//        Sort sort = sortDir.equalsIgnoreCase("desc")
+//                ? Sort.by(sortBy).descending()
+//                : Sort.by(sortBy).ascending();
+//
+//        Pageable pageable = PageRequest.of(page, size, sort);
+//        return ResponseEntity.ok(instructorService.getByStatus(status, pageable));
+//    }
+//
+//    @GetMapping("/count")
+//    public ResponseEntity<Long> countByStatus(
+//            @RequestParam Status status) {
+//        return ResponseEntity.ok(instructorService.countByStatus(status));
+//    }
 }
 

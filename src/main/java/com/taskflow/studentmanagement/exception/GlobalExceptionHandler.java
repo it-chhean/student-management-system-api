@@ -40,7 +40,7 @@ public class GlobalExceptionHandler {
                 .body(ErrorResponse.of(
                         HttpStatus.BAD_REQUEST,
                         "Request data is invalid",
-                        detail
+                        detail 
                 ));
     }
 

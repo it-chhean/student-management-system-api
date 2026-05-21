@@ -1,9 +1,8 @@
 package com.taskflow.studentmanagement.service;
 
 import com.taskflow.studentmanagement.common.service.BaseService;
-import com.taskflow.studentmanagement.io.request.DepartmentRequest;
-import com.taskflow.studentmanagement.io.response.DepartmentResponse;
+import com.taskflow.studentmanagement.domain.Department;
 
-public interface DepartmentService
-    extends BaseService< DepartmentRequest, DepartmentResponse, Long> {
+public interface DepartmentService extends BaseService<Department, Long> {
+
 }
