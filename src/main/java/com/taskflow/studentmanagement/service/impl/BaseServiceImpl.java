@@ -1,105 +1,162 @@
 package com.taskflow.studentmanagement.service.impl;
 
+import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.taskflow.studentmanagement.domain.BaseEntity;
+import com.taskflow.studentmanagement.exception.ResourceNotFoundException;
+import com.taskflow.studentmanagement.io.BaseRequestDTO;
+import com.taskflow.studentmanagement.io.BaseResponseDTO;
+import com.taskflow.studentmanagement.mapper.BaseMapper;
 import com.taskflow.studentmanagement.repository.BaseRepository;
 import com.taskflow.studentmanagement.service.BaseService;
 
-import lombok.RequiredArgsConstructor;
+@Transactional
+public abstract class BaseServiceImpl <E extends BaseEntity,
+                                       Q extends BaseRequestDTO,
+                                       R extends BaseResponseDTO,
+                                       ID extends Serializable,
+                                       Rep extends BaseRepository<E, ID>,
+                                       Map extends BaseMapper<E, Q, R>>
+                                    implements BaseService<Q, R, ID> {
 
-@RequiredArgsConstructor
-public abstract class BaseServiceImpl<T extends BaseEntity, ID> implements BaseService<T, ID>  {
+    protected final Rep repository;
+    protected final Map mapper;
 
-    protected final BaseRepository<T, ID> repository;
-
-    @Override
-    public T save(T entity) {
-        return repository.save(entity);
+    protected BaseServiceImpl(Rep repository, Map mapper) {
+        this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
-    public List<T> saveAll(List<T> entities) {
-        return repository.saveAll(entities);
+    public R save(Q request) {
+        E entity = mapper.toEntity(request);
+        return mapper.toResponse(repository.save(entity));
     }
 
     @Override
-    public Optional<T> findById(ID id) {
-        return repository.findById(id);
+    public List<R> saveAll(List<Q> requests) {
+
+        if (requests == null || requests.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        List<E> entities = requests.stream()
+            .map(mapper::toEntity)
+            .collect(Collectors.toList());
+
+        return mapper.toResponseList(repository.saveAll(entities));
     }
 
     @Override
-    public List<T> findAll() {
-        return repository.findAll();
+    public Optional<R> findById(ID id) {
+        validateId(id);
+        return repository.findById(id).map(mapper::toResponse);
     }
 
     @Override
-    public Page<T> findAll(Pageable pageable) {
-        return repository.findAll(pageable);
+    public List<R> findAll() {
+        return mapper.toResponseList(repository.findAll());
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public Page<R> findAll(Pageable pageable) {
+        Objects.requireNonNull(pageable, "Pageable must not be null ");
+        return repository.findAll(pageable).map(mapper::toResponse);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public boolean existsById(ID id) {
-        return repository.existsById(id);
+        validateId(id);
+        return repository.findByIdAndActive(id, true).isPresent();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public long count() {
         return repository.count();
     }
 
     @Override
     public void deleteById(ID id) {
-        repository.deleteById(id);
+        E entity = findEntityOrThrow(id);
+        softDelete(entity);
     }
 
     @Override
-    public void delete(T entity) {
-        repository.delete(entity);
+    public void delete(Q request) {
+        Objects.requireNonNull(request, "Request must not be null");
+        E entity = mapper.toEntity(request);
+        softDelete(entity);
     }
 
     @Override
     public void deleteAll() {
-        repository.deleteAll();
+        List<E> entities = repository.findAll();
+        entities.forEach(this::softDelete);
+        repository.saveAll(entities);
     }
 
     @Override
-    public T activate(ID id) {
+    public R activate(ID id) {
+        E entity = findEntityOrThrow(id);
+        return mapper.toResponse(repository.save(entity));
+    }
+
+    @Override
+    public R deactivate(ID id) {
+        E entity = findEntityOrThrow(id);
+        entity.setActive(false);
+        return mapper.toResponse(repository.save(entity));
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<R> findAllActive() {
+        return mapper.toResponseList(repository.findAllByActive(true));
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<R> findAllActive(Pageable pageable) {
+        Objects.requireNonNull(pageable, "Pageable must not be null");
+        return repository.findAllByActive(true, pageable)
+            .map(mapper::toResponse);
+    }
+
+    @Override
+    public Optional<R> findByIdAndActive(ID id, boolean active) {
+        validateId(id);
+        return repository.findByIdAndActive(id, active)
+            .map(mapper::toResponse);
+    }
+
+    protected E findEntityOrThrow(ID id) {
+        validateId(id);
         return repository.findById(id)
-                .map(entity -> {
-                   entity.setActive(true);
-                   return repository.save(entity);
-                })
-                .orElseThrow(() -> new ResourceNotFoundException("Entity not found with id: " + id));
+            .orElseThrow(() -> new ResourceNotFoundException("Entity not found with id: " + id));
     }
 
-    @Override
-    public T deactivate(ID id) {
-        return repository.findById(id)
-                .map( entity -> {
-                    entity.setActive(false);
-                    return repository.save(entity);
-                })
-                .orElseThrow(() -> new ResourceNotFoundException("Entity not found with id: " + id));
+    protected void softDelete(E entity) {
+        entity.setActive(false);
+        entity.setDeleted(true);
+        repository.save(entity);
     }
 
-    @Override
-    public List<T> findAllActive() {
-        return repository.findAllByActive(true);
+    /**
+     * Guards against null/blank IDs before hitting the database.
+     * */
+    private void validateId(ID id) {
+        Objects.requireNonNull(id, "ID must not be null");
     }
-
-    @Override
-    public Page<T> findAllActive(Pageable pageable) {
-        return repository.findAllByActive(true, pageable);
-    }
-
-    @Override
-    public Optional<T> findByIdAndActive(ID id, boolean active) {
-        return repository.findByIdAndActive(id, active);
-    }
-
 }

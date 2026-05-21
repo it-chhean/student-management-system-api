@@ -1,24 +1,28 @@
 package com.taskflow.studentmanagement.service;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.taskflow.studentmanagement.common.domain.BaseEntity;
+import com.taskflow.studentmanagement.io.BaseRequestDTO;
+import com.taskflow.studentmanagement.io.BaseResponseDTO;
 
-public interface BaseService<T extends BaseEntity, ID> {
+public interface BaseService<Q extends BaseRequestDTO,
+                             R extends BaseResponseDTO,
+                             ID extends Serializable> {
     
-    T save(T entity);
+    R save(Q req);
 
-    List<T> saveAll(List<T> entities);
+    List<R> saveAll(List<Q> entities);
 
-    Optional<T> findById(ID id);
+    Optional<R> findById(ID id);
 
-    List<T> findAll();
+    List<R> findAll();
 
-    Page<T> findAll(Pageable pageable);
+    Page<R> findAll(Pageable pageable);
 
     boolean existsById(ID id);
 
@@ -26,17 +30,17 @@ public interface BaseService<T extends BaseEntity, ID> {
 
     void deleteById(ID id);
 
-    void delete(T entity);
+    void delete(Q req);
 
     void deleteAll();
 
-    T activate(ID id);
+    R activate(ID id);
 
-    T deactivate(ID id);
+    R deactivate(ID id);
 
-    List<T> findAllActive();
+    List<R> findAllActive();
 
-    Page<T> findAllActive(Pageable pageable);
+    Page<R> findAllActive(Pageable pageable);
 
-    Optional<T> findByIdAndActive(ID id, boolean active);
+    Optional<R> findByIdAndActive(ID id, boolean active);
 }

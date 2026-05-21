@@ -1,12 +1,15 @@
 package com.taskflow.studentmanagement.repository;
 
 
-import com.taskflow.studentmanagement.common.repository.BaseRepository;
-import com.taskflow.studentmanagement.domain.Department;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface DepartmentRepository extends BaseRepository<Department, Long>, JpaSpecificationExecutor<Department> {
+import com.taskflow.studentmanagement.domain.Department;
 
+@Repository
+public interface DepartmentRepository extends BaseRepository<Department, Long>{
+    Optional<Department> findByNameIgnoreCase(String name);
+    List<Department> findAllByActiveTrue();
 }

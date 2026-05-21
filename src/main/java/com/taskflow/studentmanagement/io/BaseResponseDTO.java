@@ -2,14 +2,15 @@ package com.taskflow.studentmanagement.io;
 
 import java.time.LocalDateTime;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public abstract class BaseResponseDTO {
 
     private Long id;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private boolean active;
 
 }

@@ -1,14 +1,13 @@
 package com.taskflow.studentmanagement.io.request;
 
+import com.taskflow.studentmanagement.io.BaseRequestDTO;
+
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-import lombok.experimental.FieldDefaults;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class DepartmentRequest {
+public class DepartmentRequest extends BaseRequestDTO {
 
     @NotBlank(message = "Department name is required")
     private String name;
