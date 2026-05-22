@@ -31,8 +31,6 @@ public class CreateStudentRequest {
 
     String gender;
 
-    Status status;
-
     StudentAddressRequest address;
 
 }

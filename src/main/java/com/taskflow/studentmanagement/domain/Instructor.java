@@ -1,19 +1,15 @@
 package com.taskflow.studentmanagement.domain;
 
-import jakarta.persistence.*;
-import lombok.AccessLevel;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.FieldDefaults;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import com.taskflow.studentmanagement.common.domain.BaseEntity;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tbl_instructors")
@@ -21,8 +17,10 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
-public class Instructor extends BaseEntity {
+public class Instructor  {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @Column(name = "instructor_code")
     private String code;

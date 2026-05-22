@@ -1,7 +1,6 @@
 package com.taskflow.studentmanagement.service.impl;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.taskflow.studentmanagement.domain.Department;
 import com.taskflow.studentmanagement.exception.ResourceNotFoundException;
@@ -11,10 +10,8 @@ import com.taskflow.studentmanagement.mapper.DepartmentMapper;
 import com.taskflow.studentmanagement.repository.DepartmentRepository;
 import com.taskflow.studentmanagement.service.DepartmentService;
 
-import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 public class DepartmentServiceImpl 
         extends BaseServiceImpl<
         Department,
@@ -29,8 +26,11 @@ public class DepartmentServiceImpl
        super(repository, mapper);
    }
 
+   @Override
    public DepartmentResponse findByName(String name) {
        return repository.findByNameIgnoreCase(name)
+           .map(mapper::toResponse)
            .orElseThrow(() -> new ResourceNotFoundException("Department not found"));
    }
+
 }

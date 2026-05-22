@@ -27,9 +27,6 @@ public class StudentResponse {
     String email;
     String phone;
     String gender;
-    Status status;
     StudentAddressResponse address;
-    LocalDateTime createdAt;
-    LocalDateTime updatedAt;
 
 }

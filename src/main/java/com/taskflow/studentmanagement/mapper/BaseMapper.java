@@ -1,24 +1,25 @@
 package com.taskflow.studentmanagement.mapper;
 
 import java.util.List;
+import org.mapstruct.*;
 
-import org.mapstruct.BeanMapping;
-import org.mapstruct.MappingTarget;
-import org.mapstruct.NullValuePropertyMappingStrategy;
+public interface BaseMapper<E, RQ, RS>{
 
-import com.taskflow.studentmanagement.domain.BaseEntity;
-import com.taskflow.studentmanagement.io.BaseRequestDTO;
-import com.taskflow.studentmanagement.io.BaseResponseDTO;
+    /**
+     * Create: DTO -> Entity
+     * */
+    @Mapping(target = "id", ignore = true)
+    E toEntity(RQ request);
 
-public interface BaseMapper<E extends BaseEntity, 
-                            Q extends BaseRequestDTO,
-                            R extends BaseResponseDTO>{
-    E toEntity(Q request);
+    /**
+     *  Entity -> Response DTO
+     * */
+    RS toResponse(E entity);
 
-    R toResponse(E entity);
-
-    List<R> toResponseList(List<E> entities);
+    List<RS> toResponseList(List<E> entities);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void partailUpdate(Q request, @MappingTarget E entity);
+    @Mapping(target = "id", ignore = true)
+    void partialUpdate(RQ request, @MappingTarget E entity);
+
 }

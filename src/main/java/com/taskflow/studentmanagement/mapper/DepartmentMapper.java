@@ -1,12 +1,11 @@
 package com.taskflow.studentmanagement.mapper;
 
-import org.mapstruct.Mapper;
-
+import com.taskflow.studentmanagement.config.BaseMapperConfig;
 import com.taskflow.studentmanagement.domain.Department;
 import com.taskflow.studentmanagement.io.request.DepartmentRequest;
 import com.taskflow.studentmanagement.io.response.DepartmentResponse;
+import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring")
-public interface DepartmentMapper
-        extends BaseMapper<Department, DepartmentRequest, DepartmentResponse> {
+@Mapper(config = BaseMapperConfig.class)
+public interface DepartmentMapper extends BaseMapper<Department, DepartmentResponse, DepartmentRequest> {
 }

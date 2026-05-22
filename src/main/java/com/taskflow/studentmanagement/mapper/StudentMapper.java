@@ -1,6 +1,8 @@
 package com.taskflow.studentmanagement.mapper;
 
-import org.mapstruct.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 import com.taskflow.studentmanagement.domain.Student;
 import com.taskflow.studentmanagement.io.request.CreateStudentRequest;

@@ -1,7 +1,6 @@
 package com.taskflow.studentmanagement.io.request;
 
 import com.taskflow.studentmanagement.domain.StudentAddress;
-import com.taskflow.studentmanagement.status.Status;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -19,6 +18,8 @@ public class UpdateStudentRequest {
 
     Long id;
 
+    String code;
+
     String khFirstName;
 
     String khLastName;
@@ -34,8 +35,6 @@ public class UpdateStudentRequest {
     String phone;
 
     String gender;
-
-    Status status;
 
     StudentAddress address;
 }

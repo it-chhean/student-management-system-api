@@ -5,4 +5,7 @@ import com.taskflow.studentmanagement.io.response.DepartmentResponse;
 
 public interface DepartmentService 
         extends BaseService<DepartmentRequest, DepartmentResponse, Long> {
+
+        DepartmentResponse findByName(String name);
+
 } 
