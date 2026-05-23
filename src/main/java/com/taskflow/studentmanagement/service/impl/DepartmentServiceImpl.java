@@ -10,7 +10,6 @@ import com.taskflow.studentmanagement.mapper.DepartmentMapper;
 import com.taskflow.studentmanagement.repository.DepartmentRepository;
 import com.taskflow.studentmanagement.service.DepartmentService;
 
-
 @Service
 public class DepartmentServiceImpl 
         extends BaseServiceImpl<

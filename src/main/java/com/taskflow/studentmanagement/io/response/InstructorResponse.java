@@ -1,22 +1,18 @@
 package com.taskflow.studentmanagement.io.response;
 
-import lombok.AccessLevel;
+import com.taskflow.studentmanagement.io.BaseResponseDTO;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.experimental.FieldDefaults;
-
 
 @Getter
 @Setter
-@FieldDefaults(level = AccessLevel.PRIVATE)
-public class InstructorResponse {
+public class InstructorResponse extends BaseResponseDTO {
 
-    Long id;
-    String code;
-    String khName;
-    String enName;
-    String specialization;
-    String email;
-    String phone;
+    private String code;
+    private String khName;
+    private String enName;
+    private String specialization;
+    private String email;
+    private String phone;
 
 }

@@ -1,19 +1,13 @@
 package com.taskflow.studentmanagement.io.request;
 
+import com.taskflow.studentmanagement.io.BaseRequestDTO;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.FieldDefaults;
 
 @Setter
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
-public class InstructorRequest {
+public class InstructorRequest extends BaseRequestDTO {
 
     @NotBlank(message = "Instructor Code is required")
     String code;
