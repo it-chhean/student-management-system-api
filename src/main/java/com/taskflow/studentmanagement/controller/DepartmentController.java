@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,7 +35,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DepartmentResponse> getByName(@PathVariable Long id) {
+    public ResponseEntity<DepartmentResponse> getByName(@PathVariable Integer id) {
         return ResponseEntity.ok(departmentService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Department not found with id: " + id )));
     }
@@ -48,5 +49,10 @@ public class DepartmentController {
     public ResponseEntity<DepartmentResponse> getByName(@RequestParam @NotBlank(message = "Name parameter connot be blank") String name) {
         return ResponseEntity.ok(departmentService.findByName(name));
     }
-
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        departmentService.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
 }

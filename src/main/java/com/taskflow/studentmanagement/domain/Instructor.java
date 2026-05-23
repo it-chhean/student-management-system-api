@@ -2,6 +2,9 @@ package com.taskflow.studentmanagement.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,8 +19,9 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Instructor extends BaseEntity {
 
-    @Column(name = "instructor_code")
-    private String code;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column(name = "kh_name", length = 50, nullable = false)
     private String khName;

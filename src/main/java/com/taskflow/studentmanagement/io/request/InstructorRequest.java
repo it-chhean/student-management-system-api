@@ -9,9 +9,6 @@ import lombok.Setter;
 @Getter
 public class InstructorRequest extends BaseRequestDTO {
 
-    @NotBlank(message = "Instructor Code is required")
-    String code;
-
     @NotBlank(message = "Instructor Khmer name is required")
     String khName;
 

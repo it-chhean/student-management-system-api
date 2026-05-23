@@ -9,7 +9,6 @@ import lombok.Setter;
 @Setter
 public abstract class BaseResponseDTO {
 
-    private Long id;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

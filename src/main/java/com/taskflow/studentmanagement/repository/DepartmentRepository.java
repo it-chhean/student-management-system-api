@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.taskflow.studentmanagement.domain.Department;
 
 @Repository
-public interface DepartmentRepository extends BaseRepository<Department, Long>{
+public interface DepartmentRepository extends BaseRepository<Department, Integer>{
     Optional<Department> findByNameIgnoreCase(String name);
     List<Department> findAllByActiveTrue();
 }
