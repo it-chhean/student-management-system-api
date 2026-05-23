@@ -21,6 +21,7 @@ public class Instructor  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "instructor_code")
     private String code;
@@ -39,8 +40,5 @@ public class Instructor  {
 
     @Column(name = "phone", length = 20, nullable = false)
     private String phone;
-
-    @Column(name = "status")
-    private boolean deleted = false;
 
 }

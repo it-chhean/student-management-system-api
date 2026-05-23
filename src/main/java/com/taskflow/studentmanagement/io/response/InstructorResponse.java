@@ -1,13 +1,10 @@
 package com.taskflow.studentmanagement.io.response;
 
-import com.taskflow.studentmanagement.status.Status;
-
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -21,8 +18,5 @@ public class InstructorResponse {
     String specialization;
     String email;
     String phone;
-    Status status;
-    LocalDateTime createdAt;
-    LocalDateTime updatedAt;
 
 }

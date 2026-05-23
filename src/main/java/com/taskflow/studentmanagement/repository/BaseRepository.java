@@ -26,4 +26,3 @@ public interface BaseRepository<E extends BaseEntity, ID extends Serializable> e
     long countByActive(boolean active);
 
 }
-

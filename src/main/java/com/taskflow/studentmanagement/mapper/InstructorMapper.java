@@ -18,4 +18,5 @@ public interface InstructorMapper {
 
     @Mapping(target = "id", ignore = true)
     void updateFromRequest(InstructorRequest request, @MappingTarget Instructor instructor);
+
 }

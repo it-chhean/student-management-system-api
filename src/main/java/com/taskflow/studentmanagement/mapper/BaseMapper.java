@@ -8,7 +8,6 @@ public interface BaseMapper<E, RQ, RS>{
     /**
      * Create: DTO -> Entity
      * */
-    @Mapping(target = "id", ignore = true)
     E toEntity(RQ request);
 
     /**
@@ -19,7 +18,6 @@ public interface BaseMapper<E, RQ, RS>{
     List<RS> toResponseList(List<E> entities);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(target = "id", ignore = true)
     void partialUpdate(RQ request, @MappingTarget E entity);
 
 }

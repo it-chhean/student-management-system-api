@@ -1,6 +1,5 @@
 package com.taskflow.studentmanagement.io.request;
 
-import com.taskflow.studentmanagement.status.Status;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;

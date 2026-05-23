@@ -1,6 +1,5 @@
 package com.taskflow.studentmanagement.io.request;
 
-import com.taskflow.studentmanagement.status.Status;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -30,7 +29,5 @@ public class InstructorRequest {
     String email;
 
     String phone;
-
-    Status status;
 
 }
