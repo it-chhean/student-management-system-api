@@ -7,11 +7,8 @@ import com.taskflow.studentmanagement.io.response.InstructorResponse;
 import com.taskflow.studentmanagement.mapper.InstructorMapper;
 import com.taskflow.studentmanagement.repository.InstructorRepository;
 import com.taskflow.studentmanagement.service.InstructorService;
-import com.taskflow.studentmanagement.status.Status;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -108,30 +105,4 @@ public class InstructorServiceImpl implements InstructorService {
         return instructorMapper.toResponse(deletedInstructor);
     }
 
-    @Override
-    public Page<InstructorResponse> getByStatus(Status status, Pageable pageable) {
-
-        log.info("Fetching instructors by status: {}", status);
-
-        Page<InstructorResponse> instructors = instructorRepository
-                .findByStatusAndDeletedFalse(status, pageable)
-                .map(instructorMapper::toResponse);
-
-        log.info("Fetched {} instructors with status: {}",
-                instructors.getTotalElements(), status);
-
-        return instructors;
-    }
-
-    @Override
-    public long countByStatus(Status status) {
-
-        log.info("Counting instructors by status: {}", status);
-
-        long count = instructorRepository.countByStatusAndDeletedFalse(status);
-
-        log.info("Total instructors with status {} : {}", status, count);
-
-        return count;
-    }
 }

@@ -20,8 +20,4 @@ public interface InstructorService {
 
     InstructorResponse delete(Long id);
 
-    Page<InstructorResponse> getByStatus(Status status, Pageable pageable);
-
-    long countByStatus(Status status);
-
 }

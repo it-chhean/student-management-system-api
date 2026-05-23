@@ -8,6 +8,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DepartmentResponse extends BaseResponseDTO {
+
     private String name;
     private String code;
+
 }

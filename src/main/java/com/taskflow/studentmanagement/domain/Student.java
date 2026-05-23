@@ -56,4 +56,5 @@ public class Student  {
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
     private StudentAddress address;
 
+    private boolean deleted = false;
 }

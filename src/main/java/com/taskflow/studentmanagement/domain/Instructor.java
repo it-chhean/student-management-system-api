@@ -41,4 +41,6 @@ public class Instructor  {
     @Column(name = "phone", length = 20, nullable = false)
     private String phone;
 
+    private boolean deleted = false;
+
 }

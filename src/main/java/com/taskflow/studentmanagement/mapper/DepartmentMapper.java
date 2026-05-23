@@ -7,5 +7,4 @@ import com.taskflow.studentmanagement.io.response.DepartmentResponse;
 import org.mapstruct.Mapper;
 
 @Mapper(config = BaseMapperConfig.class)
-public interface DepartmentMapper extends BaseMapper<Department, DepartmentResponse, DepartmentRequest> {
-}
+public interface DepartmentMapper extends BaseMapper<Department, DepartmentRequest, DepartmentResponse> { }
