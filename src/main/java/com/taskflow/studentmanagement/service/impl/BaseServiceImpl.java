@@ -11,10 +11,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.taskflow.studentmanagement.domain.BaseEntity;
+import com.taskflow.studentmanagement.entities.BaseEntity;
 import com.taskflow.studentmanagement.exception.ResourceNotFoundException;
-import com.taskflow.studentmanagement.io.BaseRequestDTO;
-import com.taskflow.studentmanagement.io.BaseResponseDTO;
+import com.taskflow.studentmanagement.dto.BaseRequestDTO;
+import com.taskflow.studentmanagement.dto.BaseResponseDTO;
 import com.taskflow.studentmanagement.mapper.BaseMapper;
 import com.taskflow.studentmanagement.repository.BaseRepository;
 import com.taskflow.studentmanagement.service.BaseService;

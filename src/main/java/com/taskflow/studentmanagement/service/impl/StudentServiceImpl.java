@@ -7,11 +7,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import com.taskflow.studentmanagement.domain.Student;
+import com.taskflow.studentmanagement.entities.Student;
 import com.taskflow.studentmanagement.exception.ResourceNotFoundException;
-import com.taskflow.studentmanagement.io.request.CreateStudentRequest;
-import com.taskflow.studentmanagement.io.request.UpdateStudentRequest;
-import com.taskflow.studentmanagement.io.response.StudentResponse;
+import com.taskflow.studentmanagement.dto.request.CreateStudentRequest;
+import com.taskflow.studentmanagement.dto.request.UpdateStudentRequest;
+import com.taskflow.studentmanagement.dto.response.StudentResponse;
 import com.taskflow.studentmanagement.mapper.StudentMapper;
 import com.taskflow.studentmanagement.repository.StudentRepository;
 import com.taskflow.studentmanagement.service.StudentService;

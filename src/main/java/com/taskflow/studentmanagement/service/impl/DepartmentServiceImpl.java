@@ -2,10 +2,10 @@ package com.taskflow.studentmanagement.service.impl;
 
 import org.springframework.stereotype.Service;
 
-import com.taskflow.studentmanagement.domain.Department;
+import com.taskflow.studentmanagement.entities.Department;
 import com.taskflow.studentmanagement.exception.ResourceNotFoundException;
-import com.taskflow.studentmanagement.io.request.DepartmentRequest;
-import com.taskflow.studentmanagement.io.response.DepartmentResponse;
+import com.taskflow.studentmanagement.dto.request.DepartmentRequest;
+import com.taskflow.studentmanagement.dto.response.DepartmentResponse;
 import com.taskflow.studentmanagement.mapper.DepartmentMapper;
 import com.taskflow.studentmanagement.repository.DepartmentRepository;
 import com.taskflow.studentmanagement.service.DepartmentService;

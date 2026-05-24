@@ -1,7 +1,7 @@
 package com.taskflow.studentmanagement.service;
 
-import com.taskflow.studentmanagement.io.request.StudentAddressRequest;
-import com.taskflow.studentmanagement.io.response.StudentAddressResponse;
+import com.taskflow.studentmanagement.dto.request.StudentAddressRequest;
+import com.taskflow.studentmanagement.dto.response.StudentAddressResponse;
 
 public interface StudentAddressService {
 

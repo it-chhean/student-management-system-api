@@ -7,8 +7,8 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.taskflow.studentmanagement.io.BaseRequestDTO;
-import com.taskflow.studentmanagement.io.BaseResponseDTO;
+import com.taskflow.studentmanagement.dto.BaseRequestDTO;
+import com.taskflow.studentmanagement.dto.BaseResponseDTO;
 
 public interface BaseService<Q extends BaseRequestDTO,
                              R extends BaseResponseDTO,

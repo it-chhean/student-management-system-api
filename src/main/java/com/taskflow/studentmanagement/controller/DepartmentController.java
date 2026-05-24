@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.taskflow.studentmanagement.exception.ResourceNotFoundException;
-import com.taskflow.studentmanagement.io.request.DepartmentRequest;
-import com.taskflow.studentmanagement.io.response.DepartmentResponse;
+import com.taskflow.studentmanagement.dto.request.DepartmentRequest;
+import com.taskflow.studentmanagement.dto.response.DepartmentResponse;
 import com.taskflow.studentmanagement.service.DepartmentService;
 
 import jakarta.validation.Valid;

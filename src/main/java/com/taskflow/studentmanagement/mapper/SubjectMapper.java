@@ -1,8 +1,8 @@
 package com.taskflow.studentmanagement.mapper;
 
-import com.taskflow.studentmanagement.domain.Subject;
-import com.taskflow.studentmanagement.io.request.SubjectRequest;
-import com.taskflow.studentmanagement.io.response.SubjectResponse;
+import com.taskflow.studentmanagement.entities.Subject;
+import com.taskflow.studentmanagement.dto.request.SubjectRequest;
+import com.taskflow.studentmanagement.dto.response.SubjectResponse;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
