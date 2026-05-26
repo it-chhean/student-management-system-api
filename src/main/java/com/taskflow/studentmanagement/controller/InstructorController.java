@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.taskflow.studentmanagement.exception.ResourceNotFoundException;
 import com.taskflow.studentmanagement.dto.request.InstructorRequest;
 import com.taskflow.studentmanagement.dto.response.InstructorResponse;
+import com.taskflow.studentmanagement.exception.ResourceNotFoundException;
 import com.taskflow.studentmanagement.service.InstructorService;
 
 import jakarta.validation.Valid;
@@ -35,6 +35,6 @@ public class InstructorController {
                 .orElseThrow(() -> new ResourceNotFoundException("Instructor or Prof. not found"))
         );
     }
-
+    
 }
 

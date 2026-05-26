@@ -55,4 +55,5 @@ public class DepartmentController {
         departmentService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
 }

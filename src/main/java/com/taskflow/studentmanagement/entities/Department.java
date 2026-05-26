@@ -31,4 +31,12 @@ public class Department extends BaseEntity {
     @Column(name = "department_code", nullable = false, length = 20)
     private String code;
 
+    private String descirption;
+
+    private int student_count;
+
+    private int teacher_count;
+
+    private int course_count;
+
 }

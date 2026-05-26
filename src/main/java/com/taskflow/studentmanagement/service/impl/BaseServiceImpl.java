@@ -44,15 +44,12 @@ public abstract class BaseServiceImpl <E extends BaseEntity,
 
     @Override
     public List<R> saveAll(List<Q> requests) {
-
         if (requests == null || requests.isEmpty()) {
             return Collections.emptyList();
         }
-
         List<E> entities = requests.stream()
             .map(mapper::toEntity)
             .collect(Collectors.toList());
-
         return mapper.toResponseList(repository.saveAll(entities));
     }
 
