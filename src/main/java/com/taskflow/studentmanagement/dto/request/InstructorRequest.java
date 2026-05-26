@@ -11,15 +11,19 @@ import lombok.Setter;
 public class InstructorRequest extends BaseRequestDTO {
 
     @NotBlank(message = "Instructor Khmer name is required")
-    String khName;
+    private String khName;
 
     @NotBlank(message = "Instructor English name is required")
-    String enName;
+    private String enName;
 
-    String specialization;
+    private String specialization;
 
-    String email;
+    private String email;
 
-    String phone;
+    private String phone;
+
+    private String gender;
+
+    private String specilization;
 
 }

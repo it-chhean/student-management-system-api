@@ -11,6 +11,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.naming.spi.NamingManager;
+import java.util.Locale;
+
 @Entity
 @Table(name = "tbl_instructors")
 @Getter
@@ -37,5 +40,11 @@ public class Instructor extends BaseEntity {
 
     @Column(name = "phone", length = 20, nullable = false)
     private String phone;
+
+    @Column(name = "gender", nullable = false)
+    private String gender;
+
+    @Column(name = "specilization", nullable = false)
+    private String specilization;
 
 }

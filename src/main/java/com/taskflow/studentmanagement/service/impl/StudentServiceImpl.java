@@ -4,6 +4,7 @@ package com.taskflow.studentmanagement.service.impl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,8 @@ import com.taskflow.studentmanagement.repository.StudentRepository;
 import com.taskflow.studentmanagement.service.StudentService;
 
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
 
 @Slf4j
 @Service
@@ -106,6 +109,22 @@ public class StudentServiceImpl implements StudentService {
         studentRepository.save(student);
 
         log.info("Student deleted successfully with id: {}", id);
+    }
+
+    @Override
+    public List<Student> getStudentSortByKhName() {
+        return studentRepository.findAll(Sort.by(
+                Sort.Order.asc("khLastName"),
+                Sort.Order.asc("khFirstName")
+        ));
+    }
+
+    @Override
+    public List<Student> getStudentSortByEnName() {
+        return studentRepository.findAll(Sort.by(
+               Sort.Order.asc("enLastName"),
+                Sort.Order.asc("enFirstName")
+        ));
     }
 
 }
