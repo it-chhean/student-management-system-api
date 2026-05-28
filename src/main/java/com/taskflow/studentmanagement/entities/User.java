@@ -1,15 +1,14 @@
 package com.taskflow.studentmanagement.entities;
 
+import com.taskflow.studentmanagement.enums.Role;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.jspecify.annotations.NullMarked;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -19,35 +18,28 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class User implements UserDetails {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
     private String username;
-
-    @Column(nullable = false, unique = true)
     private String email;
-
-    @Column(nullable = false)
     private String password;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "role_id", referencedColumnName = "role_id" , nullable = false)
+    @Enumerated(EnumType.STRING)
     private Role role;
 
-    @Override
-    @NullMarked
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.getName()));
-    }
+    private boolean isEnable;
+    private boolean isAccountNonExpired;
+    private boolean isAccountNonLocked;
+    private boolean isCredentailsNonExpired;
+
+    private String emailVerificationToken;
+    private LocalDateTime emailVeri
 
     @Override
-    @NullMarked
-    public String getUsername() {
-        return email;
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
     }
 
     @Override

@@ -1,6 +1,5 @@
-package com.taskflow.studentmanagement.auth.dto.response;
+package com.taskflow.studentmanagement.dto.response;
 
-import jakarta.annotation.sql.DataSourceDefinition;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -1,10 +1,14 @@
 package com.taskflow.studentmanagement.security.service;
 
-import com.taskflow.studentmanagement.auth.dto.request.SignInRequest;
-import com.taskflow.studentmanagement.auth.dto.request.SignUpRequest;
-import com.taskflow.studentmanagement.auth.dto.response.JwtAuthenticationResponse;
+import com.taskflow.studentmanagement.dto.request.SignInRequest;
+import com.taskflow.studentmanagement.dto.request.SignUpRequest;
+import com.taskflow.studentmanagement.dto.response.UserResponse;
 
 public interface AuthenticationService {
-      JwtAuthenticationResponse signUp(SignUpRequest request);
-      JwtAuthenticationResponse signIn(SignInRequest request);
-} 
+
+    UserResponse signUp(SignUpRequest request);
+
+    UserResponse signIn(SignInRequest request);
+
+    UserResponse verifyEmail(String token);
+}
