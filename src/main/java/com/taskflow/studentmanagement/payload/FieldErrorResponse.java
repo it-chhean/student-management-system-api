@@ -1,4 +1,4 @@
-package com.taskflow.studentmanagement.exception;
+package com.taskflow.studentmanagement.payload;
 
 public record FieldErrorResponse(
         String field,

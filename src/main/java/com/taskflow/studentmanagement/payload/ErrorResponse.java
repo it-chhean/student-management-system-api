@@ -1,4 +1,4 @@
-package com.taskflow.studentmanagement.exception;
+package com.taskflow.studentmanagement.payload;
 
 
 import com.fasterxml.jackson.annotation.JsonInclude;
