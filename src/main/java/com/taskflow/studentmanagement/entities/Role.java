@@ -1,11 +1,19 @@
 package com.taskflow.studentmanagement.entities;
 
-import lombok.AccessLevel;
-import lombok.experimental.FieldDefaults;
+import jakarta.persistence.*;
+import lombok.*;
 
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@Entity
+@Table(name = "tbl_role")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Role {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "role_id")
     private Integer id;
 
     private String name;
