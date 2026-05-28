@@ -35,7 +35,6 @@ public class User implements UserDetails {
     private boolean isCredentailsNonExpired;
 
     private String emailVerificationToken;
-    private LocalDateTime emailVeri
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
