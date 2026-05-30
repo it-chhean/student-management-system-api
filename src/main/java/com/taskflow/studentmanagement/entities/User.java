@@ -33,12 +33,16 @@ public class User implements UserDetails {
     private boolean isAccountNonExpired;
     private boolean isAccountNonLocked;
     private boolean isCredentailsNonExpired;
-
     private String emailVerificationToken;
+    private LocalDateTime emailVerificationTokenExpired;
+
+    private LocalDateTime createdAt;
+    private LocalDateTime verifiedAt;
 
     @Override
+    @NullMarked
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
     }
 
     @Override
