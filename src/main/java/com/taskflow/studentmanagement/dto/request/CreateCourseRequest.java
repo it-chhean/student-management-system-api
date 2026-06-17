@@ -1,7 +1,7 @@
 package com.taskflow.studentmanagement.dto.request;
 
 import java.time.LocalDateTime;
-import com.taskflow.studentmanagement.status.SemesterStatus;
+import com.taskflow.studentmanagement.constant.SemesterStatus;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

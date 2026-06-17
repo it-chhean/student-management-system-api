@@ -1,6 +1,6 @@
 package com.taskflow.studentmanagement.entities;
 
-import com.taskflow.studentmanagement.enums.Role;
+import com.taskflow.studentmanagement.constant.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import org.jspecify.annotations.NullMarked;
@@ -21,7 +21,10 @@ import java.util.List;
 @Builder
 public class User implements UserDetails {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String username;
     private String email;
     private String password;
@@ -30,10 +33,15 @@ public class User implements UserDetails {
     private Role role;
 
     private boolean isEnable;
+
     private boolean isAccountNonExpired;
+
     private boolean isAccountNonLocked;
+
     private boolean isCredentailsNonExpired;
+
     private String emailVerificationToken;
+
     private LocalDateTime emailVerificationTokenExpired;
 
     private LocalDateTime createdAt;
@@ -64,4 +72,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return UserDetails.super.isEnabled();
     }
+
 }

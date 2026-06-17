@@ -1,6 +1,6 @@
 package com.taskflow.studentmanagement.dto.response;
 
-import com.taskflow.studentmanagement.status.SemesterStatus;
+import com.taskflow.studentmanagement.constant.SemesterStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

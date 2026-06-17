@@ -2,7 +2,7 @@ package com.taskflow.studentmanagement.entities;
 
 import java.time.LocalDateTime;
 
-import com.taskflow.studentmanagement.status.EnrollmentStatus;
+import com.taskflow.studentmanagement.constant.EnrollmentStatus;
 
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

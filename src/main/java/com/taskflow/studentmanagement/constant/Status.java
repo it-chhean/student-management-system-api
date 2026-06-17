@@ -1,4 +1,4 @@
-package com.taskflow.studentmanagement.status;
+package com.taskflow.studentmanagement.constant;
 
 public enum Status {
     ACTIVE,

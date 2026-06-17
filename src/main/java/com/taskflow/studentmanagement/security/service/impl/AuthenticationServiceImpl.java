@@ -41,7 +41,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .role()
                 .build();
 
-        return null;
+        return user;
     }
 
     @Override

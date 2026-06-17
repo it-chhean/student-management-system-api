@@ -3,7 +3,7 @@ package com.taskflow.studentmanagement.entities;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import com.taskflow.studentmanagement.status.AttendanceStatus;
+import com.taskflow.studentmanagement.constant.AttendanceStatus;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

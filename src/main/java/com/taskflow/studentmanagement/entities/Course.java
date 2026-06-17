@@ -2,7 +2,7 @@ package com.taskflow.studentmanagement.entities;
 
 import java.time.LocalDateTime;
 
-import com.taskflow.studentmanagement.status.SemesterStatus;
+import com.taskflow.studentmanagement.constant.SemesterStatus;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
