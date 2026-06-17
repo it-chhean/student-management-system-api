@@ -1,6 +1,6 @@
 package com.taskflow.studentmanagement.service;
 
-import com.taskflow.studentmanagement.entities.Student;
+import com.taskflow.studentmanagement.entity.Student;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

@@ -4,7 +4,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
-import com.taskflow.studentmanagement.entities.Student;
+import com.taskflow.studentmanagement.entity.Student;
 import com.taskflow.studentmanagement.dto.request.CreateStudentRequest;
 import com.taskflow.studentmanagement.dto.request.UpdateStudentRequest;
 import com.taskflow.studentmanagement.dto.response.StudentResponse;

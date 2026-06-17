@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import com.taskflow.studentmanagement.entities.Student;
+import com.taskflow.studentmanagement.entity.Student;
 import com.taskflow.studentmanagement.exception.ResourceNotFoundException;
 import com.taskflow.studentmanagement.dto.request.CreateStudentRequest;
 import com.taskflow.studentmanagement.dto.request.UpdateStudentRequest;

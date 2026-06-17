@@ -11,7 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.taskflow.studentmanagement.entities.BaseEntity;
+import com.taskflow.studentmanagement.entity.BaseEntity;
 import com.taskflow.studentmanagement.exception.ResourceNotFoundException;
 import com.taskflow.studentmanagement.dto.BaseRequestDTO;
 import com.taskflow.studentmanagement.dto.BaseResponseDTO;

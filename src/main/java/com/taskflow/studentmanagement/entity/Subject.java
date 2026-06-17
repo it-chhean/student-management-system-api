@@ -1,4 +1,4 @@
-package com.taskflow.studentmanagement.entities;
+package com.taskflow.studentmanagement.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -6,37 +6,34 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 
 @Entity
-@Table(name = "tbl_departments")
+@Table(name = "subjects")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class Department extends BaseEntity {
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class Subject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Column(name = "subject_id")
+    private Long id;
 
-    @Column(name = "department_name", nullable = false, length = 50)
+    @Column(name = "subject_name", nullable = false, length = 50 )
     private String name;
 
-    @Column(name = "department_code", nullable = false, length = 20)
+    @Column(name = "subject_code", nullable = false, length = 50 )
     private String code;
 
-    private String descirption;
-
-    private int student_count;
-
-    private int teacher_count;
-
-    private int course_count;
+    @Column(name = "description", length = 250)
+    private String description;
 
 }

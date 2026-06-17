@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
-import com.taskflow.studentmanagement.entities.Department;
+import com.taskflow.studentmanagement.entity.Department;
 
 @Repository
 public interface DepartmentRepository extends BaseRepository<Department, Integer>{

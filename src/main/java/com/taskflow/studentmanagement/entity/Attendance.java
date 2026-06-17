@@ -1,8 +1,9 @@
-package com.taskflow.studentmanagement.entities;
+package com.taskflow.studentmanagement.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import com.taskflow.studentmanagement.constant.SemesterStatus;
+import com.taskflow.studentmanagement.constant.AttendanceStatus;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,38 +21,31 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 @Entity
-@Table(name = "tbl_courses")
-@Getter @Setter
+@Table(name = "attendances")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Course {
+public class Attendance {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "course_id")
+    @Column(name = "attendance_id")
     private Long id;
 
-    @Column(name = "course_name", nullable = false , length = 50)
-    private String name;
+    @Column(name = "start_date")
+    private LocalDateTime startDate;
 
-    private String description;
+    @Column(name = "end_date")
+    private LocalDateTime endDate;
 
-    private String schedule;
-
-    private String room;
+    @Column(name = "work_date")
+    private LocalDate workdDate;
 
     @Enumerated(EnumType.STRING)
-    private SemesterStatus semester;
+    private AttendanceStatus status;
 
-    private String academicYear;
-
-    private int creditHouse;
-
-    private int maxCapacity;
-
-    private LocalDateTime startAt;
-
-    private LocalDateTime endAt;
-    
+    @Column(name = "remarks")
+    private String remarks;
 }

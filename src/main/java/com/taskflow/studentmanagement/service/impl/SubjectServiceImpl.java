@@ -1,6 +1,6 @@
 package com.taskflow.studentmanagement.service.impl;
 
-import com.taskflow.studentmanagement.entities.Subject;
+import com.taskflow.studentmanagement.entity.Subject;
 import com.taskflow.studentmanagement.exception.ResourceNotFoundException;
 import com.taskflow.studentmanagement.dto.request.SubjectRequest;
 import com.taskflow.studentmanagement.dto.response.SubjectResponse;

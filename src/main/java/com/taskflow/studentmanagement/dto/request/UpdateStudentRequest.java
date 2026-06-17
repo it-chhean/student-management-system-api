@@ -1,6 +1,6 @@
 package com.taskflow.studentmanagement.dto.request;
 
-import com.taskflow.studentmanagement.entities.StudentAddress;
+import com.taskflow.studentmanagement.entity.StudentAddress;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

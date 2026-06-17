@@ -1,4 +1,4 @@
-package com.taskflow.studentmanagement.entities;
+package com.taskflow.studentmanagement.entity;
 
 public class Schedule {
 

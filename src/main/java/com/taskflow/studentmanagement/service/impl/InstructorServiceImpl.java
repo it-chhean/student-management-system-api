@@ -2,7 +2,7 @@ package com.taskflow.studentmanagement.service.impl;
 
 import org.springframework.stereotype.Service;
 
-import com.taskflow.studentmanagement.entities.Instructor;
+import com.taskflow.studentmanagement.entity.Instructor;
 import com.taskflow.studentmanagement.exception.ResourceNotFoundException;
 import com.taskflow.studentmanagement.dto.request.InstructorRequest;
 import com.taskflow.studentmanagement.dto.response.InstructorResponse;
