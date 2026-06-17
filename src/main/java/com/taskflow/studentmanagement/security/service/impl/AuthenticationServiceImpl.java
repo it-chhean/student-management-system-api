@@ -2,17 +2,19 @@ package com.taskflow.studentmanagement.security.service.impl;
 
 import com.taskflow.studentmanagement.dto.response.UserResponse;
 import com.taskflow.studentmanagement.entities.User;
+import com.taskflow.studentmanagement.exception.ConflictException;
 import com.taskflow.studentmanagement.mapper.UserMapper;
 import com.taskflow.studentmanagement.repository.UserRepository;
 import com.taskflow.studentmanagement.security.service.JwtService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import com.taskflow.studentmanagement.dto.request.SignInRequest;
 import com.taskflow.studentmanagement.dto.request.SignUpRequest;
 import com.taskflow.studentmanagement.security.service.AuthenticationService;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,17 +33,17 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public UserResponse signUp(SignUpRequest request) {
 
         if (repository.exitsByEmail(request.getEmail())) {
-            throw new EmailAlreadyExistsException("Email already registered: " + request.getEmail());
+            throw new ConflictException("Email already registered: " + request.getEmail());
         }
 
         User user = User.builder()
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .username(request.getUsername())
-                .role()
+                .role(null)
                 .build();
 
-        return user;
+        return mapper.toResponse(user);
     }
 
     @Override
@@ -54,4 +56,28 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         return null;
     }
 
+    @Override
+    public User getUser(Long id) {
+        return null;
+    }
+
+    @Override
+    public void delete(Long id) {
+
+    }
+
+    @Override
+    public Page<UserResponse> findAll(Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public UserResponse me() {
+        return null;
+    }
+
+    private User findByOrThrow(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with id: " + id));
+    }
 }
