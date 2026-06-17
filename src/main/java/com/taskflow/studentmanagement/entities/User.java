@@ -47,17 +47,13 @@ public class User implements UserDetails {
     private LocalDateTime emailVerificationTokenExpired;
 
     private LocalDateTime createdAt;
+
     private LocalDateTime verifiedAt;
 
     @Override
     @NullMarked
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
     }
 
     @Override
